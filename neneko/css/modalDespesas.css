@@ -2,6 +2,7 @@ body {
     font-family: "Montserrat", sans-serif;
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 /* Barra de navegação */
@@ -171,3 +172,53 @@ tr:nth-child(even) {
 tr:hover {
     background-color: #ddd;
 }
+
+.modal-content{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content:space-between; 
+    align-items: center;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: #fefefa;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    color:  #FFCA3A;
+    padding-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px; /* Ajuste conforme necessário */
+}
+
+label {
+    color:  #303030;
+    font-size: 17px;
+}
+
+input, select, textarea{
+    border-color:  #303030;
+    color: #303030;
+    border-radius: 10px;
+    font-size: 16px; /* Tamanho da fonte dos inputs */
+    width: 100%; /* Largura total */
+    padding: 8px; /* Espaçamento interno */
+    box-sizing: border-box; /* Inclui o padding e a borda na largura total */
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.close {
+    align-self: flex-end;
+}
+
+h2{
+    font-size: 30px;
+}
+
+

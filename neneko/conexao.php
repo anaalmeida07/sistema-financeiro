@@ -2,8 +2,8 @@
 session_start(); //inicia a sessão para armazernar os dados logados 
 
 $servername = "localhost";
-$username="ana";
-$password = "123456";
+$username="root";
+$password = "";
 $dbname= "financeiro";
 
 $conn = new mysqli($servername, $username, $password, $dbname);

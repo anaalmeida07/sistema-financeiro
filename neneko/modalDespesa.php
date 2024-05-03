@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/modalDespesas.css">
     <title>Bem-vindo!</title>
 </head>
+
 <body>
-<div class="barra">
+    <div class="barra">
         <h1>Neneko <img src="img/gatinho.png" alt="logo"></h1>
         <nav>
             <ul>
@@ -45,16 +46,16 @@
                 <!-- Campos do formulário -->
                 <label for="descricao">Descrição:</label>
                 <input type="text" id="descricao" name="descricao" required>
-                
+                <br>
                 <label for="valor">Valor:</label>
                 <input type="number" id="valor" name="valor" step="0.01" required>
-                
+                <br>
                 <label for="data">Data:</label>
                 <input type="date" id="data" name="data" required>
-                
+                <br>
                 <label for="categoria">Categoria:</label>
                 <input type="text" id="categoria" name="categoria" required>
-                
+                <br>
                 <label for="metodo_pagamento">Método de Pagamento:</label>
                 <select id="metodo_pagamento" name="metodo_pagamento" required>
                     <option value="cartao_debito">Cartão de Débito</option>
@@ -63,14 +64,15 @@
                     <option value="debito_automatico">Débito Automático</option>
                     <option value="dinheiro">Dinheiro</option>
                 </select>
-                
+                <br>
                 <label for="notas">Notas:</label>
                 <textarea id="notas" name="notas"></textarea>
-                
+                <br>
                 <input type="submit" value="Adicionar Despesa">
             </form>
         </div>
     </div>
+
 
     <script>
         // Capturar elementos do DOM
@@ -96,4 +98,5 @@
         }
     </script>
 </body>
+
 </html>
