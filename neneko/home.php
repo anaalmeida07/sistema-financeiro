@@ -47,10 +47,17 @@
 
         <div class="row">
             <div class="pair">
-                <a href="#">
+                <a href="adicionarReceita.php">
                     <div class="card">
                         <h4>ADICIONAR RECEITA</h4>
                         <p>Tenha tudo sobre controle adicionando suas receitas aqui!</p>
+                    </div>
+                </a>
+                <br>
+                <a href="termometro.php">
+                    <div class="card">
+                        <h4>TERMÔMETRO</h4>
+                        <p>Adicione metas e veja como você está indo!</p>
                     </div>
                 </a>
             </div>
