@@ -13,8 +13,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $metodo_pagamento = $_POST['metodo_pagamento'];
         $notas = $_POST['notas'];
 
+        // Convertendo a data para o formato do MySQL
+        $data_mysql = date('Y-m-d', strtotime($data));
+
         // Obtém o ID do usuário logado - suponha que você já tenha a sessão iniciada
-       
+        session_start();
         $id_usuario = $_SESSION['usuario_id'];
 
         // Prepara e executa a consulta SQL para inserir a nova despesa
@@ -22,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $conn->prepare($sql);
 
         // Liga os parâmetros à consulta preparada  
-        $stmt->bind_param("issdsss", $id_usuario, $descricao, $valor, $data, $categoria, $metodo_pagamento, $notas);
+        $stmt->bind_param("issdsss", $id_usuario, $descricao, $valor, $data_mysql, $categoria, $metodo_pagamento, $notas);
 
         // Executa a consulta preparada
         if ($stmt->execute()) {

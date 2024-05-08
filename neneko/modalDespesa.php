@@ -8,7 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/modalDespesas.css">
-    <title>Bem-vindo!</title>
+    <link rel="stylesheet" href="css/tabelaDespesas.css"> 
+    <title>Despesas</title>
 </head>
 
 <body>
@@ -24,15 +25,14 @@
         </nav>
     </div>
 
-    <h1 class="h1-index">Vizualizar Despesas</h1>
+    <h1 class="h1-index">Visualizar Despesas</h1>
 
     <div class="content">
         <div class="corpo-index">
             <a href="home.php"><button class="button-19" role="button">Voltar para Home</button></a>
-            <a href="tabelaDespesas.php"><button class="button-19" role="button">Visualizar suas despesas</button></a> <!-- Novo botão -->
-            <!-- Botão para abrir o modal --->
             <button id="openModal" class="button-19" role="button">Adicionar Conta a Pagar</button>
         </div>
+        <br>
     </div>
 
     <!-- Modal -->
@@ -73,6 +73,52 @@
         </div>
     </div>
 
+    <?php
+    include 'conexao.php'; // Inclui o arquivo de conexão com o banco de dados
+
+    // Verifica se o usuário está logado
+    if (!isset($_SESSION['usuario_id'])) {
+        header('Location: login.php'); // Redireciona para a página de login se não estiver logado
+        exit;
+    }
+
+    $usuario_id = $_SESSION['usuario_id']; // Obtém o ID do usuário logado
+
+    // Consulta SQL para selecionar as despesas do usuário logado
+    $sql = "SELECT * FROM despesas WHERE id_usuario = $usuario_id";
+    $result = $conn->query($sql);
+
+    // Verifica se há resultados na consulta
+    if ($result->num_rows > 0) {
+        // Exibir cabeçalhos da tabela
+        echo "<table>";
+        echo "<tr>";
+        echo "<th>Descrição</th>";
+        echo "<th>Valor</th>";
+        echo "<th>Data</th>";
+        echo "<th>Categoria</th>";
+        echo "<th>Método de Pagamento</th>";
+        echo "<th>Notas</th>";
+        echo "</tr>";
+
+        // Exibir dados das despesas
+        while($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>".$row["descricao"]."</td>";
+            echo "<td>".$row["valor"]."</td>";
+            echo "<td>".$row["data"]."</td>";
+            echo "<td>".$row["categoria"]."</td>";
+            echo "<td>".$row["metodo_pagamento"]."</td>";
+            echo "<td>".$row["notas"]."</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "0 resultados";
+    }
+
+    $conn->close(); // Fecha a conexão com o banco de dados
+    ?>
 
     <script>
         // Capturar elementos do DOM

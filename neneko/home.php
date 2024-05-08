@@ -31,7 +31,7 @@
             <div class="pair">
                 <a href="exibirConta.php">
                     <div class="card">
-                        <h4>LISTAGEM DE CONTAS</h4>
+                        <h4>LISTAGEM DE CONTAS BANCÁRIAS</h4>
                         <p>Organize suas contas em uma lista dinâmica e de fácil entendimento </p>
                     </div>
                 </a>
