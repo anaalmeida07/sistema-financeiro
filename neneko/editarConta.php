@@ -7,10 +7,8 @@ if(isset($_GET['id'])) {
     $id = $_GET['id'];
 
     // Consulta SQL para obter as informações da conta com o ID especificado
-    $sql = "SELECT cu.id_conta, c.banco, c.tipoConta FROM `conta_usuario` cu 
-            INNER JOIN `usuarios` u ON cu.id_usuario = u.id_usuario 
-            INNER JOIN `conta` c ON cu.id_conta = c.id_conta 
-            WHERE c.id_conta = ? AND u.id_usuario = ?";
+    $sql = "SELECT id_conta, banco, tipoConta FROM `conta_usuario` 
+            WHERE id_conta = ? AND id_usuario = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ii", $id, $_SESSION['usuario_id']);
     $stmt->execute();
@@ -31,7 +29,7 @@ if(isset($_GET['id'])) {
                 $tipoConta = $_POST['tipoConta'];
 
                 // Atualiza a consulta para usar um marcador de posição (?) para o ID
-                $sql_update_conta = "UPDATE `conta` SET `banco`=?, `tipoConta`=? WHERE id_conta=?";
+                $sql_update_conta = "UPDATE `conta_usuario` SET `banco`=?, `tipoConta`=? WHERE id_conta=?";
 
                 $stmt_update_conta = $conn->prepare($sql_update_conta);
                 $stmt_update_conta->bind_param("ssi", $banco, $tipoConta, $id);

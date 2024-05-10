@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "<a href='adicionarConta.php'><button class='add-button'>Adicionar Conta</button></a>";
 
     // Busca todas as contas de banco associadas ao usuário logado
-    $sql = "SELECT * FROM `conta_usuario` cu JOIN `conta` c ON cu.id_conta = c.id_conta WHERE cu.`id_usuario` = ?";
+    $sql = "SELECT * FROM conta_usuario WHERE id_usuario = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id_usuario);
     $stmt->execute();

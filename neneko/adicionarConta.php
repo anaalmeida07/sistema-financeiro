@@ -1,39 +1,34 @@
 <?php
-
 require_once "conexao.php";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['submit'])) {
-        $banco = $_POST['banco'];
-        $tipoConta = $_POST['tipoConta'];
+// Verifica se o usuário está logado
+if (!isset($_SESSION['usuario_id'])) {
+    // Se o usuário não estiver logado, redireciona para a página de login
+    header("Location: login.php");
+    exit;
+}
 
-        // Insere a nova conta na tabela conta
-        $sql_conta = "INSERT INTO `conta` (`id_conta`, `banco`, `tipoConta`) VALUES (NULL, ?, ?)";
-        $stmt_conta = $conn->prepare($sql_conta);
-        $stmt_conta->bind_param("ss", $banco, $tipoConta);
+// ID do usuário logado
+$usuario_id = $_SESSION['usuario_id'];
 
-        if ($stmt_conta->execute()) {
-            // Obtém o ID da conta recém-inserida
-            $id_conta = $stmt_conta->insert_id;
+// Verifica se o formulário foi submetido
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+    $banco = $_POST['banco'];
+    $tipoConta = $_POST['tipoConta'];
 
-            // Insere a relação entre conta e usuário na tabela conta_usuario
-            $sql_conta_usuario = "INSERT INTO `conta_usuario` (`id_conta`, `id_usuario`) VALUES (?, ?)";
-            $stmt_conta_usuario = $conn->prepare($sql_conta_usuario);
-            $stmt_conta_usuario->bind_param("ii", $id_conta, $_SESSION['usuario_id']);
+    // Insere a nova conta na tabela conta_usuario
+    $sql_conta_usuario = "INSERT INTO conta_usuario (banco, tipoConta, id_usuario) VALUES (?, ?, ?)";
+    $stmt_conta_usuario = $conn->prepare($sql_conta_usuario);
+    $stmt_conta_usuario->bind_param("ssi", $banco, $tipoConta, $usuario_id);
 
-            if ($stmt_conta_usuario->execute()) {
-                header('Location: exibirConta.php');
-                exit;
-            } else {
-                echo "Erro ao inserir relação conta-usuario: " . $stmt_conta_usuario->error;
-            }
-        } else {
-            echo "Erro ao inserir nova conta: " . $stmt_conta->error;
-        }
-
-        $stmt_conta->close();
-        $stmt_conta_usuario->close();
+    if ($stmt_conta_usuario->execute()) {
+        header('Location: exibirConta.php');
+        exit;
+    } else {
+        echo "Erro ao inserir nova conta: " . $stmt_conta_usuario->error;
     }
+
+    $stmt_conta_usuario->close();
 }
 
 $conn->close();
@@ -41,11 +36,13 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Cadastro de Conta</title>
 </head>
+
 <body>
     <h2>Cadastro de Conta</h2>
     <form action="adicionarConta.php" method="post">
@@ -58,4 +55,5 @@ $conn->close();
         <input type="submit" name="submit" value="Cadastrar">
     </form>
 </body>
+
 </html>

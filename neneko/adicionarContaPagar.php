@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $notas = $_POST['notas'];
 
         // Convertendo a data para o formato do MySQL
-        $data_mysql = date('Y-m-d', strtotime($data));
+        $data_mysql = date('Y-m-d');
 
         // Obtém o ID do usuário logado - suponha que você já tenha a sessão iniciada
         session_start();
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $conn->prepare($sql);
 
         // Liga os parâmetros à consulta preparada  
-        $stmt->bind_param("issdsss", $id_usuario, $descricao, $valor, $data_mysql, $categoria, $metodo_pagamento, $notas);
+        $stmt->bind_param("issssss", $id_usuario, $descricao, $valor, $data_mysql, $categoria, $metodo_pagamento, $notas);
 
         // Executa a consulta preparada
         if ($stmt->execute()) {

@@ -50,7 +50,7 @@
                 <label for="valor">Valor:</label>
                 <input type="number" id="valor" name="valor" step="0.01" required>
                 <br>
-                <label for="data">Data:</label>
+                <label for="data">Data: </label>
                 <input type="date" id="data" name="data" required>
                 <br>
                 <label for="categoria">Categoria:</label>
@@ -85,8 +85,20 @@
     $usuario_id = $_SESSION['usuario_id']; // Obtém o ID do usuário logado
 
     // Consulta SQL para selecionar as despesas do usuário logado
-    $sql = "SELECT * FROM despesas WHERE id_usuario = $usuario_id";
-    $result = $conn->query($sql);
+    // Prepare a consulta SQL para selecionar as despesas do usuário logado
+$sql = "SELECT * FROM despesas WHERE id_usuario = ?";
+$stmt = $conn->prepare($sql);
+
+// Verifica se a preparação da consulta foi bem-sucedida
+if ($stmt) {
+    // Associa o parâmetro e executa a consulta
+    $stmt->bind_param("i", $usuario_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Restante do seu código aqui
+}
+
 
     // Verifica se há resultados na consulta
     if ($result->num_rows > 0) {

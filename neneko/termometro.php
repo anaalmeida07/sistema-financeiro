@@ -14,6 +14,7 @@
 
 <body>
     <div class="barra">
+       
         <h1>Neneko <img src="img/gatinho.png" alt="logo"></h1>
         <nav>
             <ul>
@@ -22,10 +23,14 @@
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
+        
     </div>
     <h1 class="bv-title">Termômetro</h1>
     <a href='home.php'><button class='back-button'>Voltar</button></a>
+    <form action="processaTermometro.php">
     <a href=''><button class='back-button'>Adicionar meta</button></a>
+</form>
+    
 
 </body>
 
