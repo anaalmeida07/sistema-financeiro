@@ -1,0 +1,171 @@
+/* Estilos gerais */
+body {
+    background-color: #FEFEFA;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: "Montserrat", sans-serif;
+    /* Impede a rolagem horizontal */
+}
+
+/* Barra de navegação */
+.barra {
+    background-color: #7952b3;
+    color: #FEFEFA;
+    display: flex;
+    justify-content: space-between;
+    /* Adiciona espaçamento entre os itens */
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+    position: relative;
+    /* Remover 'fixed' para tornar o menu não fixo */
+    z-index: 1;
+    /* Adicionar um z-index para garantir que o menu fique sobreposto a outros elementos */
+}
+
+/* Manter o h1 à esquerda do menu */
+.barra h1 {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    align-items: center; /* Alinha o texto verticalmente com a imagem */
+}
+
+/* Tamanho da imagem do gatinho igual ao texto */
+.barra h1 img {
+    height: 1em; /* Define a altura da imagem igual ao tamanho do texto */
+    margin-left: 5px; /* Adiciona um pequeno espaçamento entre o texto e a imagem */
+}
+
+/* Centralizar apenas as opções do menu */
+.barra nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    /* Centralizar as opções de menu */
+}
+
+.barra nav ul li {
+    margin-right: 30px;
+}
+
+.barra nav ul li:first-child {
+    margin-right: 15px;
+    /* Distância menor entre as opções */
+}
+
+.barra nav ul li a {
+    text-decoration: none;
+    color: #FEFEFA;
+    font-family: "Montserrat", sans-serif;
+}
+
+@media screen and (max-width: 700px) {
+
+    /* Barra de navegação responsiva */
+    .barra {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .barra nav {
+        margin-top: 10px;
+    }
+
+    .barra nav ul {
+        margin-top: 10px;
+    }
+
+    .barra nav ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Adiciona flexbox para posicionar os elementos na página */
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.row {
+    margin-bottom: 20px; /* Adiciona espaçamento entre as linhas */
+}
+
+.card {
+    border-radius: 10px;
+    filter: drop-shadow(0 5px 10px 0 #ffffff);
+    width: 400px;
+    height: 160px;
+    background-color: #D8BFD8;
+    padding: 20px;
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    transition: 0.6s ease-in;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -15px;
+    right: -15px;
+    background: #7952b3;
+    height: 220px;
+    width: 25px;
+    border-radius: 32px;
+    transform: scale(1);
+    transform-origin: 50% 50%;
+    transition: transform 0.25s ease-out;
+}
+
+.card:hover::before {
+    transition-delay: 0.2s;
+    transform: scale(40);
+}
+
+.card:hover {
+    color: #ffffff;
+
+}
+
+.card p {
+    padding: 10px 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.bv-home {
+    color: #7952b3;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+}
+.pair {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pair .card {
+    margin: 0 10px;
+}
+
+@media screen and (max-width: 920px) {
+    .pair {
+        flex-direction: column;
+    }
+}

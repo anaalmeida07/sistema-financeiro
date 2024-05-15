@@ -1,0 +1,176 @@
+/* Estilos gerais */
+body {
+    background-color: #1982c4;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: "Montserrat", sans-serif;
+    /* Impede a rolagem horizontal */
+}
+
+/* Barra de navegação */
+.barra {
+    background-color: #FEFEFA;
+    color: #303030;
+    display: flex;
+    justify-content: space-between; /* Adiciona espaçamento entre os itens */
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+    position: relative; /* Remover 'fixed' para tornar o menu não fixo */
+    z-index: 1; /* Adicionar um z-index para garantir que o menu fique sobreposto a outros elementos */
+}
+
+/* Manter o h1 à esquerda do menu */
+.barra h1 {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Centralizar apenas as opções do menu */
+.barra nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centralizar as opções de menu */
+}
+
+.barra nav ul li {
+    margin-right: 30px;
+}
+
+.barra nav ul li:first-child {
+    margin-right: 15px;
+    /* Distância menor entre as opções */
+}
+
+.barra nav ul li a {
+    text-decoration: none;
+    color: #303030;
+    font-family: "Montserrat", sans-serif;
+}
+
+@media screen and (max-width: 700px) {
+    /* Barra de navegação responsiva */
+    .barra {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .barra nav {
+        margin-top: 10px;
+    }
+
+    .barra nav ul {
+        margin-top: 10px;
+    }
+
+    .barra nav ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .corpo-index,
+    .img-index {
+        width: 100%;
+        text-align: center;
+    }
+
+    .corpo-index {
+        padding: 20px;
+    }
+
+    .button-19 {
+        width: 70%;
+    }
+}
+
+
+.button-19 {
+    appearance: button;
+    background-color: #e0373c;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: din-round,sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 13px 16px;
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.button-19:after {
+    background-clip: padding-box;
+    background-color: #FF595E;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.button-19:main,
+.button-19:focus {
+    user-select: auto;
+}
+
+.button-19:hover:not(:disabled) {
+    filter: brightness(1.1);
+    -webkit-filter: brightness(1.1);
+}
+
+.button-19:disabled {
+    cursor: auto;
+}
+
+.button-19:active {
+    border-width: 4px 0 0;
+    background: none;
+}
+
+.h1-index {
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Adiciona flexbox para posicionar os elementos na página */
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.img-index img {
+    max-width: 100%;
+    height: auto;
+}

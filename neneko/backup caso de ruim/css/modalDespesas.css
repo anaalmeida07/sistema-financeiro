@@ -1,14 +1,13 @@
 body {
-    background-color: #FEFEFA;
+    font-family: "Montserrat", sans-serif;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
-    font-family: "Montserrat", sans-serif;
+   
 }
 
 /* Barra de navegação */
 .barra {
-    background-color: #00401A;
+    background-color: #FFCA3A;
     color: #FEFEFA;
     display: flex;
     justify-content: space-between;
@@ -81,100 +80,59 @@ body {
         display: block;
         margin-bottom: 10px;
     }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
-.bv-title{
-    color: #00401A;
-    text-align: center;
-    font-family: "Montserrat", sans-serif;
+.h1-index{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
 }
 
-.back-button {
-    background-color: #00401A;
+
+.button-19 {
+    background-color: #FFCA3A;
     border: none;
     color: white;
-    padding: 10px 24px;
+    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 5px;
-}
-
-.edit-button,
-.delete-button {
-    background-color: #008CBA;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin-right: 5px;
-    cursor: pointer;
-    border-radius: 3px;
-}
-
-.buttons-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.edit-button,
-.delete-button {
-    margin-top: 5px; /* Espaçamento entre os botões */
-}
-
-
-.delete-button {
-    background-color: #D44500;
-}
-
-.boxReceita {
-    background-color: #D0F0C0;
-    border: 2px solid #00401A;
-    border-radius: 10px;
-    box-shadow: 0 0 5px #40826D; 
-    /* Desloca a sombra 0px horizontalmente e 0px verticalmente, com um desfoque de 10px e uma cor preta com 50% de opacidade */
-    padding: 20px;
-    margin: 20px;
-    display: flex;
-    justify-content: space-between;
-    color: #00401A;
-}
-
-.titulo-lado{
-    color: #00401A; 
-    margin-left: 10px;
-    font-family: "Montserrat", sans-serif;
+    border-radius: 8px;
 }
 
 /* Estilos para o modal */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
+    display: none; /* Ocultar o modal por padrão */
+    position: fixed; /* Posição fixa para cobrir a tela inteira */
+    z-index: 1; /* Colocar o modal sobre todo o conteúdo */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
+    overflow: auto; /* Habilitar rolagem quando necessário */
+    background-color: rgba(0,0,0,0.4); /* Fundo escuro semi-transparente */
+    padding-top: 60px; /* Espaçamento do topo para evitar a barra de navegação */
 }
 
+/* Estilos para o conteúdo do modal */
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 5% auto; /* Centralizar o modal na tela */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 80%; /* Largura do modal */
 }
 
+/* Estilos para o botão de fechar */
 .close {
     color: #aaa;
     float: right;
@@ -188,3 +146,79 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #FFCA3A;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+.modal-content{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content:space-between; 
+    align-items: center;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: #fefefa;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    color:  #FFCA3A;
+    padding-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px; /* Ajuste conforme necessário */
+}
+
+label {
+    color:  #303030;
+    font-size: 17px;
+}
+
+input, select, textarea{
+    border-color:  #303030;
+    color: #303030;
+    border-radius: 10px;
+    font-size: 16px; /* Tamanho da fonte dos inputs */
+    width: 100%; /* Largura total */
+    padding: 8px; /* Espaçamento interno */
+    box-sizing: border-box; /* Inclui o padding e a borda na largura total */
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.close {
+    align-self: flex-end;
+}
+
+h2{
+    font-size: 30px;
+}
+
+

@@ -11,6 +11,13 @@
     <title>Bem-vindo!</title>
     <link rel="stylesheet" href="css/home.css">
     <link rel="icon" href="img/gatinho.png" type="image/x-icon">
+    <style>
+        .conta-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,51 +26,65 @@
         <nav>
             <ul>
                 <li><a href="paginas/sobre/sobre.php">Sobre nós</a></li>
-                <li><a href="">Templates</a></li>
+                <li><a href="#">Templates</a></li>
                 <li><a href="logout.php">Logout</a></li>
-                <!-- Link para a página logout.php -->
             </ul>
         </nav>
     </div>
     <h1 class="bv-home">Bem-vindo!</h1>
-    <div class="content">
-        <div class="row">
-            <div class="pair">
-                <a href="exibirConta.php">
-                    <div class="card">
-                        <h4>LISTAGEM DE CONTAS BANCÁRIAS</h4>
-                        <p>Organize suas contas em uma lista dinâmica e de fácil entendimento </p>
-                    </div>
-                </a>
-                <br>
-                <a href="modalDespesa.php">
-                    <div class="card">
-                        <h4>DESPESAS</h4>
-                        <p>Tenha tudo sobre controle adicionando suas despesas aqui!</p>
-                    </div>
-                </a>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="pair">
-                <a href="adicionarReceita.php">
-                    <div class="card">
-                        <h4>ADICIONAR RECEITA</h4>
-                        <p>Tenha tudo sobre controle adicionando suas receitas aqui!</p>
-                    </div>
-                </a>
-                <br>
-                <a href="termometro.php">
-                    <div class="card">
-                        <h4>TERMÔMETRO</h4>
-                        <p>Adicione metas e veja como você está indo!</p>
-                    </div>
-                </a>
-            </div>
-        </div>
+    <div class="form-container">
+        <h2>Adicionar Nova Conta Bancária</h2>
+        <form action="adicionar_conta.php" method="post">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required><br><br>
+
+            <label for="tipo_conta">Tipo de Conta:</label>
+            <input type="text" id="tipo_conta" name="tipo_conta" required><br><br>
+
+            <label for="saldo">Saldo:</label>
+            <input type="text" id="saldo" name="saldo" required><br><br>
+
+            <input type="submit" value="Adicionar Conta">
+        </form>
     </div>
 
+    <br>
+
+    <div class="contas">
+        <?php
+        // Inclui o arquivo de conexão com o banco de dados
+        require_once 'conexao.php';
+
+        // Obtém o ID do usuário logado
+        $usuario_id = $_SESSION['usuario_id'];
+
+        // Prepara a consulta para obter as contas bancárias do usuário
+        $sql = "SELECT nome, saldo FROM contas_bancarias WHERE usuario_id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $usuario_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Verifica se há contas bancárias
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                // Exibe as contas bancárias em boxes
+                echo "<div class='conta-box'>";
+                echo "<h3>{$row['nome']}</h3>";
+                echo "<p>Saldo: {$row['saldo']}</p>";
+                echo "</div>";
+            }
+        } else {
+            // Caso não haja contas bancárias
+            echo "<p>Nenhuma conta bancária encontrada.</p>";
+        }
+
+        // Fecha a conexão e a declaração
+        $stmt->close();
+        $conn->close();
+        ?>
+    </div>
 
 </body>
 

@@ -15,9 +15,9 @@
         <h1>Neneko</h1>
         <nav>
             <ul>
-                <li><a href="#">Sobre nós</a></li>
+                <li><a href="paginas/sobre/sobre.php">Sobre nós</a></li>
                 <li><a href="#">Templates</a></li>
-                <li><a href="#">Login</a></li>
+                <li><a href="login.php">Login</a></li>
             </ul>
         </nav>
     </div>
