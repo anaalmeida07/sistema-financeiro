@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Bem-vindo!</title>
     <link rel="stylesheet" href="css/home.css">
     <link rel="icon" href="img/gatinho.png" type="image/x-icon">
@@ -84,6 +83,39 @@
             </select><br><br>
 
             <input type="submit" value="Adicionar Receita">
+        </form>
+    </div>
+
+    <br>
+
+    <div class="form-container">
+        <h2>Adicionar Nova Despesa</h2>
+        <form action="processar_despesa.php" method="post">
+            <label for="valor">Valor:</label>
+            <input type="text" id="valor" name="valor" required><br><br>
+
+            <label for="categoria">Nome:</label>
+            <input type="text" id="categoria" name="categoria" required><br><br>
+
+            <label for="conta_id">Conta de Origem:</label>
+            <select id="conta_id" name="conta_id" required>
+                <?php
+                // Popula as opções com as contas bancárias do usuário
+                require_once 'conexao.php';
+                $usuario_id = $_SESSION['usuario_id'];
+                $sql = "SELECT id, nome FROM contas_bancarias WHERE usuario_id = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $usuario_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                while ($row = $result->fetch_assoc()) {
+                    echo "<option value='{$row['id']}'>{$row['nome']}</option>";
+                }
+                $stmt->close();
+                ?>
+            </select><br><br>
+
+            <input type="submit" value="Adicionar Despesa">
         </form>
     </div>
 
