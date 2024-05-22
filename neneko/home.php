@@ -1,3 +1,7 @@
+<?php
+// Iniciar a sessão no início do arquivo
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -10,6 +14,7 @@
     <title>Bem-vindo!</title>
     <link rel="stylesheet" href="css/home.css">
     <link rel="icon" href="img/gatinho.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         .conta-box {
             border: 1px solid #ccc;
@@ -52,12 +57,6 @@
             text-decoration: none;
             cursor: pointer;
         }
-
-        #addContaBtn, #addReceitaBtn, #addDespesaBtn{
-            background-color: #7952b3;
-            padding: 20px 15px;
-            margin: 10px;
-        }
     </style>
 </head>
 
@@ -73,9 +72,9 @@
         </nav>
     </div>
 
-    <button id="addContaBtn">Adicionar Conta Bancária</button>
-    <button id="addReceitaBtn">Adicionar Nova Receita</button>
-    <button id="addDespesaBtn">Adicionar Nova Despesa</button>
+    <button type="button" id="addContaBtn" class="btn btn-outline-danger">Adicionar Conta Bancária</button>
+    <button type="button"  id="addReceitaBtn" class="btn btn-outline-danger">Adicionar Nova Receita</button>
+    <button type="button"  id="addDespesaBtn" class="btn btn-outline-danger">Adicionar Nova Despesa</button>
 
     <!-- Modal para adicionar conta bancária -->
     <div id="addContaModal" class="modal">
@@ -116,16 +115,20 @@
                 <select id="conta_destino" name="conta_destino" required>
                     <?php
                     require_once 'conexao.php';
-                    $usuario_id = $_SESSION['usuario_id'];
-                    $sql = "SELECT id, nome FROM contas_bancarias WHERE usuario_id = ?";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bind_param("i", $usuario_id);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<option value='{$row['id']}'>{$row['nome']}</option>";
+                    if(isset($_SESSION['usuario_id'])) {
+                        $usuario_id = $_SESSION['usuario_id'];
+                        $sql = "SELECT id, nome FROM contas_bancarias WHERE usuario_id = ?";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bind_param("i", $usuario_id);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<option value='{$row['id']}'>{$row['nome']}</option>";
+                        }
+                        $stmt->close();
+                    } else {
+                        echo "<option value=''>Nenhuma conta encontrada</option>";
                     }
-                    $stmt->close();
                     ?>
                 </select><br><br>
 
@@ -150,16 +153,20 @@
                 <select id="conta_id" name="conta_id" required>
                     <?php
                     require_once 'conexao.php';
-                    $usuario_id = $_SESSION['usuario_id'];
-                    $sql = "SELECT id, nome FROM contas_bancarias WHERE usuario_id = ?";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bind_param("i", $usuario_id);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<option value='{$row['id']}'>{$row['nome']}</option>";
+                    if(isset($_SESSION['usuario_id'])) {
+                        $usuario_id = $_SESSION['usuario_id'];
+                        $sql = "SELECT id, nome FROM contas_bancarias WHERE usuario_id = ?";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bind_param("i", $usuario_id);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<option value='{$row['id']}'>{$row['nome']}</option>";
+                        }
+                        $stmt->close();
+                    } else {
+                        echo "<option value=''>Nenhuma conta encontrada</option>";
                     }
-                    $stmt->close();
                     ?>
                 </select><br><br>
 
@@ -172,23 +179,27 @@
         <h2 class="bv-home">Contas Bancárias</h2>
         <?php
         require_once 'conexao.php';
-        $usuario_id = $_SESSION['usuario_id'];
-        $sql = "SELECT nome, saldo FROM contas_bancarias WHERE usuario_id = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $usuario_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo "<div class='conta-box'>";
-                echo "<h3>{$row['nome']}</h3>";
-                echo "<p>Saldo: {$row['saldo']}</p>";
-                echo "</div>";
+        if(isset($_SESSION['usuario_id'])) {
+            $usuario_id = $_SESSION['usuario_id'];
+            $sql = "SELECT nome, saldo FROM contas_bancarias WHERE usuario_id = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $usuario_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<div class='conta-box'>";
+                    echo "<h3>{$row['nome']}</h3>";
+                    echo "<p>Saldo: {$row['saldo']}</p>";
+                    echo "</div>";
+                }
+            } else {
+                echo "<p>Nenhuma conta bancária encontrada.</p>";
             }
+            $stmt->close();
         } else {
-            echo "<p>Nenhuma conta bancária encontrada.</p>";
+            echo "<p>Nenhum usuário logado.</p>";
         }
-        $stmt->close();
         $conn->close();
         ?>
     </div>
