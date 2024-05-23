@@ -12,52 +12,9 @@ session_start();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Bem-vindo!</title>
-    <link rel="stylesheet" href="css/home.css">
     <link rel="icon" href="img/gatinho.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
-        .conta-box {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            padding-top: 100px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0, 0, 0);
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #7952b3;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="css/home.css">
 </head>
 
 <body>
@@ -66,15 +23,16 @@ session_start();
         <nav>
             <ul>
                 <li><a href="paginas/sobre/sobre.php">Sobre nós</a></li>
-                <li><a href="#">Templates</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
     </div>
 
-    <button type="button" id="addContaBtn" class="btn btn-outline-danger">Adicionar Conta Bancária</button>
-    <button type="button"  id="addReceitaBtn" class="btn btn-outline-danger">Adicionar Nova Receita</button>
-    <button type="button"  id="addDespesaBtn" class="btn btn-outline-danger">Adicionar Nova Despesa</button>
+    <div class="btn-group">
+        <button type="button" id="addContaBtn" class="btn btn-outline-primary">Adicionar Conta Bancária</button>
+        <button type="button" id="addReceitaBtn" class="btn btn-outline-primary">Adicionar Nova Receita</button>
+        <button type="button" id="addDespesaBtn" class="btn btn-outline-primary">Adicionar Nova Despesa</button>
+    </div>
 
     <!-- Modal para adicionar conta bancária -->
     <div id="addContaModal" class="modal">
@@ -115,7 +73,7 @@ session_start();
                 <select id="conta_destino" name="conta_destino" required>
                     <?php
                     require_once 'conexao.php';
-                    if(isset($_SESSION['usuario_id'])) {
+                    if (isset($_SESSION['usuario_id'])) {
                         $usuario_id = $_SESSION['usuario_id'];
                         $sql = "SELECT id, nome FROM contas_bancarias WHERE usuario_id = ?";
                         $stmt = $conn->prepare($sql);
@@ -153,7 +111,7 @@ session_start();
                 <select id="conta_id" name="conta_id" required>
                     <?php
                     require_once 'conexao.php';
-                    if(isset($_SESSION['usuario_id'])) {
+                    if (isset($_SESSION['usuario_id'])) {
                         $usuario_id = $_SESSION['usuario_id'];
                         $sql = "SELECT id, nome FROM contas_bancarias WHERE usuario_id = ?";
                         $stmt = $conn->prepare($sql);
@@ -175,11 +133,11 @@ session_start();
         </div>
     </div>
 
-    <div class="contas">
-        <h2 class="bv-home">Contas Bancárias</h2>
+    <div class="list-group">
         <?php
         require_once 'conexao.php';
-        if(isset($_SESSION['usuario_id'])) {
+        echo "<li class='list-group-item active' aria-current='true'>Contas Bancárias</li>";
+        if (isset($_SESSION['usuario_id'])) {
             $usuario_id = $_SESSION['usuario_id'];
             $sql = "SELECT nome, saldo FROM contas_bancarias WHERE usuario_id = ?";
             $stmt = $conn->prepare($sql);
@@ -188,19 +146,59 @@ session_start();
             $result = $stmt->get_result();
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    echo "<div class='conta-box'>";
-                    echo "<h3>{$row['nome']}</h3>";
-                    echo "<p>Saldo: {$row['saldo']}</p>";
+                    echo "<a href='#' class='list-group-item list-group-item-action'>";
+                    echo "<h5 class='mb-1'>{$row['nome']}</h5>";
+                    echo "<p class='mb-1'>Saldo: R$ {$row['saldo']}</p>";
+                    echo "</a>";
+                }
+            } else {
+                echo "<p class='list-group-item'>Nenhuma conta bancária encontrada.</p>";
+            }
+            $stmt->close();
+        } else {
+            echo "<p class='list-group-item'>Nenhum usuário logado.</p>";
+        }
+        ?>
+    </div>
+
+    <div class="extrato">
+        <h2 class="bv-home">extrato</h2>
+        <hr>
+        <?php
+        require_once 'conexao.php';
+        if (isset($_SESSION['usuario_id'])) {
+            $usuario_id = $_SESSION['usuario_id'];
+            $sql = "
+                SELECT 'despesa' AS tipo, valor, categoria, data_despesa AS data, cb.nome AS conta
+                FROM despesas_usuario du
+                JOIN contas_bancarias cb ON du.conta_id = cb.id
+                WHERE du.usuario_id = ?
+                UNION
+                SELECT 'receita' AS tipo, valor, categoria, data_recebimento AS data, cb.nome AS conta
+                FROM receitas_usuario ru
+                JOIN contas_bancarias cb ON ru.conta_destino_id = cb.id
+                WHERE ru.usuario_id = ?
+                ORDER BY data DESC
+            ";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ii", $usuario_id, $usuario_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $classe = $row['tipo'] == 'receita' ? 'receita' : 'despesa';
+                    echo "<div class='extrato-item {$classe}'>";
+                    echo "<h5>R$ {$row['valor']}</h5>";
+                    echo "<p>{$row['categoria']} - {$row['tipo']} - {$row['conta']}</p>";
                     echo "</div>";
                 }
             } else {
-                echo "<p>Nenhuma conta bancária encontrada.</p>";
+                echo "<p>Nenhuma transação encontrada.</p>";
             }
             $stmt->close();
         } else {
             echo "<p>Nenhum usuário logado.</p>";
         }
-        $conn->close();
         ?>
     </div>
 
