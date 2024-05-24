@@ -6,17 +6,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css">
     <title>Bem-vindo!!</title>
     <link rel="icon" href="img/gatinho.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <div class="barra">
-        <h1>Neneko</h1>
+<div class="barra">
+        <h1>Neneko <img src="img/gatinho.png" alt="logo"></h1>
         <nav>
             <ul>
-                <li><a href="paginas/sobre/sobre.php">Sobre nós</a></li>
-                <li><a href="#">Templates</a></li>
                 <li><a href="login.php">Login</a></li>
             </ul>
         </nav>

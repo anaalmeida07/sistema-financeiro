@@ -14,11 +14,10 @@
 
 <body>
     <div class="barra">
-        <h1>Neneko</h1>
+        <h1>Neneko <img src="img/gatinho.png" alt="logo"></h1>
         <nav>
             <ul>
-                <li><a href="paginas/sobre/sobre.php">Sobre nós</a></li>
-                <li><a href="#">Templates</a></li>
+                <li><a href="index.php">Voltar</a></li>
             </ul>
         </nav>
     </div>
@@ -37,61 +36,61 @@
                     <label for="login-password" class="placeholder">Senha</label>
                 </div>
                 <button type="text" class="submit">Entrar</button>
-                </form>
-            </div>
-            <div class="form cadastro">
-            <form method="post" action="cadastro.php">
-                <div class="title">Cadastro</div>
-                <div class="input-container ic1">
-                    <input id="cadastro-email" class="input" type="email" name="email" placeholder=" " />
-                    <div class="cut"></div>
-                    <label for="cadastro-email" class="placeholder">E-mail</label>
-                </div>
-                <div class="input-container ic2">
-                    <input id="cadastro-nome" class="input" type="text" name="nome" placeholder=" " />
-                    <div class="cut"></div>
-                    <label for="cadastro-nome" class="placeholder">Nome</label>
-                </div>
-                <div class="input-container ic2">
-                    <input id="cadastro-password" class="input" type="password" name="senha" placeholder=" " />
-                    <div class="cut cut-short"></div>
-                    <label for="cadastro-password" class="placeholder">Senha</label>
-                </div>
-                <button type="submit" class="submit" id="btn-cadastrar">Cadastrar</button>
-            </div>
         </form>
-        <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Verifica se o parâmetro 'cadastro' está presente na URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const cadastroSuccess = urlParams.has('cadastro') && urlParams.get('cadastro') === 'sucesso';
-        
-        // Se 'cadastroSuccess' for verdadeiro, exibe o alerta
-        if (cadastroSuccess) {
-            alert("Cadastro realizado com sucesso!");   
-        }
-    });
-</script>
+    </div>
+    <div class="form cadastro">
+        <form method="post" action="cadastro.php">
+            <div class="title">Cadastro</div>
+            <div class="input-container ic1">
+                <input id="cadastro-email" class="input" type="email" name="email" placeholder=" " />
+                <div class="cut"></div>
+                <label for="cadastro-email" class="placeholder">E-mail</label>
+            </div>
+            <div class="input-container ic2">
+                <input id="cadastro-nome" class="input" type="text" name="nome" placeholder=" " />
+                <div class="cut"></div>
+                <label for="cadastro-nome" class="placeholder">Nome</label>
+            </div>
+            <div class="input-container ic2">
+                <input id="cadastro-password" class="input" type="password" name="senha" placeholder=" " />
+                <div class="cut cut-short"></div>
+                <label for="cadastro-password" class="placeholder">Senha</label>
+            </div>
+            <button type="submit" class="submit" id="btn-cadastrar">Cadastrar</button>
+    </div>
+    </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verifica se o parâmetro 'cadastro' está presente na URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const cadastroSuccess = urlParams.has('cadastro') && urlParams.get('cadastro') === 'sucesso';
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Verifica se o parâmetro 'erro' está presente na URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const erro = urlParams.get('erro');
-        
-        // Se 'erro' for 'senha', exibe o alerta de senha incorreta
-        if (erro === 'senha') {
-            alert("Senha incorreta!");
-        }
-        // Se 'erro' for 'usuario', exibe o alerta de usuário não encontrado
-        else if (erro === 'usuario') {
-            alert("Usuário não encontrado!");
-        }
-    });
-</script>
+            // Se 'cadastroSuccess' for verdadeiro, exibe o alerta
+            if (cadastroSuccess) {
+                alert("Cadastro realizado com sucesso!");
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verifica se o parâmetro 'erro' está presente na URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const erro = urlParams.get('erro');
+
+            // Se 'erro' for 'senha', exibe o alerta de senha incorreta
+            if (erro === 'senha') {
+                alert("Senha incorreta!");
+            }
+            // Se 'erro' for 'usuario', exibe o alerta de usuário não encontrado
+            else if (erro === 'usuario') {
+                alert("Usuário não encontrado!");
+            }
+        });
+    </script>
     </div>
 
-   
+
 
 </body>
 

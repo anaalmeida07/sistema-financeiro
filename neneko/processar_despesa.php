@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $categoria = $_POST['categoria'];
     $conta_id = $_POST['conta_id'];
     $usuario_id = $_SESSION['usuario_id'];
-    $data_despesa = date('Y-m-d');
+    $data_despesa = date('Y-m-d H:i:s');
 
     // Insere a despesa na tabela despesas_usuario
     $sql = "INSERT INTO despesas_usuario (usuario_id, valor, conta_id, categoria, data_despesa) VALUES (?, ?, ?, ?, ?)";

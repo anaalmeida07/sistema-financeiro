@@ -1,6 +1,6 @@
 /* Estilos gerais */
 body {
-    background-color: #1982c4;
+    background-color: #FEFEFA;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -10,21 +10,32 @@ body {
 
 /* Barra de navegação */
 .barra {
-    background-color: #FEFEFA;
-    color: #303030;
+    background-color: #0070BB;
+    color: #FEFEFA;
     display: flex;
-    justify-content: space-between; /* Adiciona espaçamento entre os itens */
+    justify-content: space-between;
+    /* Adiciona espaçamento entre os itens */
     align-items: center;
     padding: 10px 20px;
     width: 100%;
-    position: relative; /* Remover 'fixed' para tornar o menu não fixo */
-    z-index: 1; /* Adicionar um z-index para garantir que o menu fique sobreposto a outros elementos */
+    position: relative;
+    /* Remover 'fixed' para tornar o menu não fixo */
+    z-index: 1;
+    /* Adicionar um z-index para garantir que o menu fique sobreposto a outros elementos */
 }
 
 /* Manter o h1 à esquerda do menu */
 .barra h1 {
     margin: 0;
     font-family: "Montserrat", sans-serif;
+    display: flex;
+    align-items: center; /* Alinha o texto verticalmente com a imagem */
+}
+
+/* Tamanho da imagem do gatinho igual ao texto */
+.barra h1 img {
+    height: 1em; /* Define a altura da imagem igual ao tamanho do texto */
+    margin-left: 5px; /* Adiciona um pequeno espaçamento entre o texto e a imagem */
 }
 
 /* Centralizar apenas as opções do menu */
@@ -33,7 +44,8 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center; /* Centralizar as opções de menu */
+    justify-content: center;
+    /* Centralizar as opções de menu */
 }
 
 .barra nav ul li {
@@ -47,8 +59,35 @@ body {
 
 .barra nav ul li a {
     text-decoration: none;
-    color: #303030;
+    color: #FEFEFA;
     font-family: "Montserrat", sans-serif;
+}
+
+@media screen and (max-width: 700px) {
+
+    /* Barra de navegação responsiva */
+    .barra {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .barra nav {
+        margin-top: 10px;
+    }
+
+    .barra nav ul {
+        margin-top: 10px;
+    }
+
+    .barra nav ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 @media screen and (max-width: 700px) {
@@ -158,7 +197,7 @@ body {
 }
 
 .h1-index {
-    color: white;
+    color: #0070BB;
     font-family: "Montserrat", sans-serif;
 }
 

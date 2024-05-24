@@ -187,9 +187,11 @@ session_start();
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     $classe = $row['tipo'] == 'receita' ? 'receita' : 'despesa';
+                    $data = date('d/m/Y H:i:s', strtotime($row['data']));
                     echo "<div class='extrato-item {$classe}'>";
                     echo "<h5>R$ {$row['valor']}</h5>";
-                    echo "<p>{$row['categoria']} - {$row['tipo']} - {$row['conta']}</p>";
+                    echo "<p>{$row['categoria']} - {$row['conta']}</p>";
+                    echo "<p>{$data}</p>";
                     echo "</div>";
                 }
             } else {

@@ -126,7 +126,7 @@ body {
 
 .list-group {
     float: right;
-    width: 30%;
+    width: 38%;
     margin-top: 10px;
     margin-right: 10px;
 }
@@ -149,7 +149,7 @@ hr{
     width: calc(60% - 20px); /* Ajusta o tamanho e leva em conta a margem */
     margin-top: 10px;
     margin-left: 10px;
-    height: calc(70vh - 100px); 
+    height: calc(77vh - 100px); 
     overflow-y: auto; /* Adiciona uma barra de rolagem vertical */
     border: 3px solid #0070BB; /* Adiciona uma borda para demarcar o tamanho */
     border-radius: 10px;
