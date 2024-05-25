@@ -149,7 +149,7 @@ hr{
     width: calc(60% - 20px); /* Ajusta o tamanho e leva em conta a margem */
     margin-top: 10px;
     margin-left: 10px;
-    height: calc(77vh - 100px); 
+    height: calc(71vh - 100px); 
     overflow-y: auto; /* Adiciona uma barra de rolagem vertical */
     border: 3px solid #0070BB; /* Adiciona uma borda para demarcar o tamanho */
     border-radius: 10px;
@@ -210,13 +210,38 @@ hr{
     cursor: pointer;
 }
 
-.extrato-item.receita {
-    color: green;
+/* Adicione isso ao seu CSS */
+/* Estilo para o extrato */
+.extrato {
+    margin-top: 20px;
 }
 
-.extrato-item.despesa {
-    color: red;
+.extrato h2 {
+    color: #007bff;
 }
+
+.extrato p {
+    margin-bottom: 5px;
+}
+
+.extrato .despesa {
+    color: #dc3545;
+}
+
+.extrato .receita {
+    color: #28a745;
+}
+
+.extrato .conta {
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.extrato .data {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
 
 /* Centraliza os botões */
 .btn-outline-danger {
@@ -225,9 +250,19 @@ hr{
 
 #addContaBtn,
 #addReceitaBtn,
-#addDespesaBtn {
+#addDespesaBtn,
+#editarMeta {
     display: block;
     margin: 20px auto;
     text-align: center;
 }
+
+@media (min-width: 701px) {
+    .grafico canvas {
+        max-width: 50%; /* Ajuste a largura máxima conforme necessário */
+        height: 10px;
+
+    }
+}
+
 
