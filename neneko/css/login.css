@@ -10,7 +10,7 @@ body {
 /* Barra de navegação */
 .barra {
     background-color: #FEFEFA;
-    color: grey;
+    color: rgb(48, 43, 43);
     display: flex;
     justify-content: space-between;
     /* Adiciona espaçamento entre os itens */
@@ -51,17 +51,17 @@ body {
 }
 
 .barra nav ul li {
-    margin-right: 30px;
+    margin-right: 40px;
 }
 
 .barra nav ul li:first-child {
-    margin-right: 15px;
+    margin-right: 30px;
     /* Distância menor entre as opções */
 }
 
 .barra nav ul li a {
     text-decoration: none;
-    color: grey;
+    color: rgb(48, 43, 43);
     font-family: "Montserrat", sans-serif;
 }
 

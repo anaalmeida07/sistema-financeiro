@@ -53,7 +53,7 @@ body {
 }
 
 .barra nav ul li:first-child {
-    margin-right: 15px;
+    margin-right: 30px;
     /* Distância menor entre as opções */
 }
 

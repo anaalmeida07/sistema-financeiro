@@ -32,7 +32,6 @@ session_start();
         <button type="button" id="addContaBtn" class="btn btn-outline-primary">Adicionar Conta Bancária</button>
         <button type="button" id="addReceitaBtn" class="btn btn-outline-primary">Adicionar Nova Receita</button>
         <button type="button" id="addDespesaBtn" class="btn btn-outline-primary">Adicionar Nova Despesa</button>
-        <button type="button" id="editarMeta" class="btn btn-outline-primary">Editar Meta</button>
     </div>
 
     <!-- Modal para adicionar conta bancária -->
@@ -134,57 +133,6 @@ session_start();
         </div>
     </div>
 
-    <!-- Modal para editar meta -->
-    <div id="editarMetaModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeMetaModal">&times;</span>
-            <h2>Editar Meta Financeira</h2>
-            <form action="processar_meta.php" method="post" id="formMeta">
-                <?php
-                require_once 'conexao.php';
-                if (isset($_SESSION['usuario_id'])) {
-                    $usuario_id = $_SESSION['usuario_id'];
-                    $sql = "SELECT id, valor_meta, valor_atual FROM metas_usuario WHERE usuario_id = ?";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bind_param("i", $usuario_id);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    $meta = $result->fetch_assoc();
-                    $stmt->close();
-                }
-                ?>
-                <label for="valor_meta">Valor da Meta:</label>
-                <input type="text" id="valor_meta" name="valor_meta" value="<?php echo isset($meta['valor_meta']) ? $meta['valor_meta'] : ''; ?>" required><br><br>
-
-                <label for="valor_guardar">Valor para Guardar:</label>
-                <input type="text" id="valor_guardar" name="valor_guardar" required><br><br>
-
-                <label for="conta_origem">Conta de Origem:</label>
-                <select id="conta_origem" name="conta_origem" required>
-                    <?php
-                    require_once 'conexao.php';
-                    if (isset($_SESSION['usuario_id'])) {
-                        $usuario_id = $_SESSION['usuario_id'];
-                        $sql = "SELECT id, nome, saldo FROM contas_bancarias WHERE usuario_id = ?";
-                        $stmt = $conn->prepare($sql);
-                        $stmt->bind_param("i", $usuario_id);
-                        $stmt->execute();
-                        $result = $stmt->get_result();
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<option value='{$row['id']}'>{$row['nome']} (Saldo: R$ {$row['saldo']})</option>";
-                        }
-                        $stmt->close();
-                    } else {
-                        echo "<option value=''>Nenhuma conta encontrada</option>";
-                    }
-                    ?>
-                </select><br><br>
-
-                <input type="submit" value="Salvar Meta">
-            </form>
-        </div>
-    </div>
-
     <div class="list-group">
         <?php
         require_once 'conexao.php';
@@ -216,23 +164,36 @@ session_start();
     <!-- Extrato -->
     <div class="extrato">
         <h2 class="bv-home">Extrato</h2>
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <label for="filtro">Mostrar transações dos últimos:</label>
+            <select name="filtro" id="filtro">
+                <option value="5">5 dias</option>
+                <option value="10">10 dias</option>
+                <option value="30">30 dias</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+        </form>
         <hr>
         <?php
         require_once 'conexao.php';
         if (isset($_SESSION['usuario_id'])) {
             $usuario_id = $_SESSION['usuario_id'];
+
+            // Verificar se o filtro foi enviado
+            $filtro_dias = isset($_POST['filtro']) ? $_POST['filtro'] : 5;
+
             $sql = "
-                SELECT 'despesa' AS tipo, valor, categoria, data_despesa AS data, cb.nome AS conta
-                FROM despesas_usuario du
-                JOIN             contas_bancarias cb ON du.conta_id = cb.id
-                WHERE du.usuario_id = ? AND data_despesa >= DATE_SUB(CURDATE(), INTERVAL 4 DAY)
-                UNION
-                SELECT 'receita' AS tipo, valor, categoria, data_recebimento AS data, cb.nome AS conta
-                FROM receitas_usuario ru
-                JOIN contas_bancarias cb ON ru.conta_destino_id = cb.id
-                WHERE ru.usuario_id = ? AND data_recebimento >= DATE_SUB(CURDATE(), INTERVAL 4 DAY)
-                ORDER BY data DESC
-            ";
+            SELECT 'despesa' AS tipo, valor, categoria, data_despesa AS data, cb.nome AS conta
+            FROM despesas_usuario du
+            JOIN contas_bancarias cb ON du.conta_id = cb.id
+            WHERE du.usuario_id = ? AND data_despesa >= DATE_SUB(CURDATE(), INTERVAL $filtro_dias DAY)
+            UNION
+            SELECT 'receita' AS tipo, valor, categoria, data_recebimento AS data, cb.nome AS conta
+            FROM receitas_usuario ru
+            JOIN contas_bancarias cb ON ru.conta_destino_id = cb.id
+            WHERE ru.usuario_id = ? AND data_recebimento >= DATE_SUB(CURDATE(), INTERVAL $filtro_dias DAY)
+            ORDER BY data DESC
+        ";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("ii", $usuario_id, $usuario_id);
             $stmt->execute();
@@ -249,7 +210,7 @@ session_start();
                     echo "<hr>";
                 }
             } else {
-                echo "<p class='bv-home'>Nenhum registro de transação nos últimos 4 dias.</p>";
+                echo "<p class='bv-home'>Nenhum registro de transação nos últimos $filtro_dias dias.</p>";
             }
             $stmt->close();
         } else {
@@ -258,8 +219,11 @@ session_start();
         ?>
     </div>
 
+
+
     <!-- Gráfico -->
     <div class="grafico">
+        <h3 class="titulo_centro">Receitas x Despesas</h3>
         <canvas id="myChart"></canvas>
     </div>
 
@@ -339,23 +303,201 @@ session_start();
         });
     </script>
 
+    <h3 class="titulo_centro ">Divisão de Despesas nos últimos 7 dias</h3>
+    <!-- Gráfico de Pizza -->
+    <div class="grafico-pizza">
+        <canvas id="pieChart" width="700" height="700"></canvas>
+    </div>
+
+    <script>
+        // Dados para o gráfico de pizza
+        <?php
+        // SQL para obter os totais de despesas por categoria
+        $sql_despesas = "
+        SELECT categoria, SUM(valor) AS total
+        FROM despesas_usuario
+        WHERE usuario_id = ? AND data_despesa >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)
+        GROUP BY categoria
+    ";
+        $stmt_despesas = $conn->prepare($sql_despesas);
+        $stmt_despesas->bind_param("i", $usuario_id);
+        $stmt_despesas->execute();
+        $result_despesas = $stmt_despesas->get_result();
+
+        // Preparar os dados para o gráfico de pizza
+        $categorias = [];
+        $totais = [];
+        while ($row = $result_despesas->fetch_assoc()) {
+            $categorias[] = $row['categoria'];
+            $totais[] = (float) $row['total']; // Manter positivo para despesas
+        }
+
+        $stmt_despesas->close();
+        ?>
+
+        var ctxPie = document.getElementById('pieChart').getContext('2d');
+        var pieChart = new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: <?php echo json_encode($categorias); ?>,
+                datasets: [{
+                    data: <?php echo json_encode($totais); ?>,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 300, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(153, 102, 255, 0.7)',
+                        'rgba(255, 159, 64, 0.7)',
+                        'rgba(74, 99, 132, 0.9)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(153, 102, 255, 0.7)',
+                        'rgba(255, 200, 64, 0.7)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 300, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(153, 102, 255, 0.7)',
+                        'rgba(255, 159, 64, 0.7)',
+                        'rgba(74, 99, 132, 0.9)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(153, 102, 255, 0.7)',
+                        'rgba(255, 200, 64, 0.7)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': R$ ' + tooltipItem.raw.toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+
+    <h3 class="titulo_centro ">Divisão de Saldo</h3>
+    <!-- Gráfico de Pizza -->
+    <div class="grafico-pizza">
+        <canvas id="pizzaChart" width="700" height="700"></canvas>
+    </div>
+
+    <script>
+        <?php
+        $sql_despesas = "
+        SELECT nome, SUM(saldo) AS total
+        FROM contas_bancarias
+        WHERE usuario_id = ? 
+        GROUP BY nome
+    ";
+        $stmt_despesas = $conn->prepare($sql_despesas);
+        $stmt_despesas->bind_param("i", $usuario_id);
+        $stmt_despesas->execute();
+        $result_despesas = $stmt_despesas->get_result();
+
+        // Preparar os dados para o gráfico de pizza
+        $categorias = [];
+        $totais = [];
+        while ($row = $result_despesas->fetch_assoc()) {
+            $categorias[] = $row['nome'];
+            $totais[] = (float) $row['total']; // Manter positivo para despesas
+        }
+
+        $stmt_despesas->close();
+        ?>
+
+        var ctxPie = document.getElementById('pizzaChart').getContext('2d');
+        var pizzaChart = new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: <?php echo json_encode($categorias); ?>,
+                datasets: [{
+                    data: <?php echo json_encode($totais); ?>,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 300, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(153, 102, 255, 0.7)',
+                        'rgba(255, 159, 64, 0.7)',
+                        'rgba(74, 99, 132, 0.9)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(153, 102, 255, 0.7)',
+                        'rgba(255, 200, 64, 0.7)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 300, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(153, 102, 255, 0.7)',
+                        'rgba(255, 159, 64, 0.7)',
+                        'rgba(74, 99, 132, 0.9)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(153, 102, 255, 0.7)',
+                        'rgba(255, 200, 64, 0.7)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': R$ ' + tooltipItem.raw.toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
     <script src="js/home.js"></script>
     <script>
         // Funções para abrir e fechar os modais
         var addContaModal = document.getElementById('addContaModal');
         var addReceitaModal = document.getElementById('addReceitaModal');
         var addDespesaModal = document.getElementById('addDespesaModal');
-        var editarMetaModal = document.getElementById('editarMetaModal');
 
         var addContaBtn = document.getElementById('addContaBtn');
         var addReceitaBtn = document.getElementById('addReceitaBtn');
         var addDespesaBtn = document.getElementById('addDespesaBtn');
-        var editarMetaBtn = document.getElementById('editarMeta');
 
         var closeContaModal = document.getElementById('closeContaModal');
         var closeReceitaModal = document.getElementById('closeReceitaModal');
         var closeDespesaModal = document.getElementById('closeDespesaModal');
-        var closeMetaModal = document.getElementById('closeMetaModal');
 
         addContaBtn.onclick = function() {
             addContaModal.style.display = 'block';
@@ -367,10 +509,6 @@ session_start();
 
         addDespesaBtn.onclick = function() {
             addDespesaModal.style.display = 'block';
-        }
-
-        editarMetaBtn.onclick = function() {
-            editarMetaModal.style.display = 'block';
         }
 
         closeContaModal.onclick = function() {
@@ -385,10 +523,6 @@ session_start();
             addDespesaModal.style.display = 'none';
         }
 
-        closeMetaModal.onclick = function() {
-            editarMetaModal.style.display = 'none';
-        }
-
         window.onclick = function(event) {
             if (event.target == addContaModal) {
                 addContaModal.style.display = 'none';
@@ -398,9 +532,6 @@ session_start();
             }
             if (event.target == addDespesaModal) {
                 addDespesaModal.style.display = 'none';
-            }
-            if (event.target == editarMetaModal) {
-                editarMetaModal.style.display = 'none';
             }
         }
     </script>

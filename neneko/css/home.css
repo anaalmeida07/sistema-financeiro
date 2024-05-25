@@ -29,13 +29,16 @@ body {
     margin: 0;
     font-family: "Montserrat", sans-serif;
     display: flex;
-    align-items: center; /* Alinha o texto verticalmente com a imagem */
+    align-items: center;
+    /* Alinha o texto verticalmente com a imagem */
 }
 
 /* Tamanho da imagem do gatinho igual ao texto */
 .barra h1 img {
-    height: 1em; /* Define a altura da imagem igual ao tamanho do texto */
-    margin-left: 5px; /* Adiciona um pequeno espaçamento entre o texto e a imagem */
+    height: 1em;
+    /* Define a altura da imagem igual ao tamanho do texto */
+    margin-left: 5px;
+    /* Adiciona um pequeno espaçamento entre o texto e a imagem */
 }
 
 /* Centralizar apenas as opções do menu */
@@ -83,11 +86,6 @@ body {
         display: block;
         margin-bottom: 10px;
     }
-
-    .content {
-        flex-direction: column;
-        align-items: center;
-    }
 }
 
 .navbar-custom {
@@ -105,7 +103,7 @@ body {
 }
 
 .navbar-custom img {
-    margin-left: 10px;
+    margin-left: 20px;
     height: 30px;
 }
 
@@ -124,14 +122,8 @@ body {
     margin-bottom: 20px;
 }
 
-.list-group {
-    float: right;
-    width: 38%;
-    margin-top: 10px;
-    margin-right: 10px;
-}
 
-.bv-home{
+.bv-home {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -139,38 +131,49 @@ body {
     margin-top: 6px;
 }
 
-hr{
+hr {
     color: #0070BB;
     border-width: 2px;
 }
 
 .extrato {
     float: left;
-    width: calc(60% - 20px); /* Ajusta o tamanho e leva em conta a margem */
+    width: calc(100% - 20px);
+    /* Ajusta o tamanho e leva em conta a margem */
     margin-top: 10px;
     margin-left: 10px;
-    height: calc(71vh - 100px); 
-    overflow-y: auto; /* Adiciona uma barra de rolagem vertical */
-    border: 3px solid #0070BB; /* Adiciona uma borda para demarcar o tamanho */
+    margin-bottom: 80px;
+    height: calc(81vh - 100px);
+    overflow-y: auto;
+    /* Adiciona uma barra de rolagem vertical */
+    border: 3px solid #0070BB;
+    /* Adiciona uma borda para demarcar o tamanho */
     border-radius: 10px;
-    
+
     /* Estilização da barra de rolagem */
-    scrollbar-width: thin; /* Para navegadores que suportam o padrão */
-    scrollbar-color: #0070BB #f0f0f0; /* Cor da barra e cor de fundo */
+    scrollbar-width: thin;
+    /* Para navegadores que suportam o padrão */
+    scrollbar-color: #0070BB #f0f0f0;
+    /* Cor da barra e cor de fundo */
 
     /* Estilos para navegadores WebKit (Chrome, Safari, Opera) */
     &::-webkit-scrollbar {
-        width: 8px; /* Largura da barra de rolagem */
+        width: 6px;
+        /* Largura da barra de rolagem */
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: #0070BB; /* Cor do botão da barra de rolagem */
-        border-radius: 6px; /* Borda do botão */
+        background-color: #0070BB;
+        /* Cor do botão da barra de rolagem */
+        border-radius: 6px;
+        /* Borda do botão */
     }
 
     &::-webkit-scrollbar-track {
-        background-color: #f0f0f0; /* Cor de fundo da barra de rolagem */
-        border-radius: 14px; /* Borda da barra de rolagem */
+        background-color: #f0f0f0;
+        /* Cor de fundo da barra de rolagem */
+        border-radius: 14px;
+        /* Borda da barra de rolagem */
     }
 }
 
@@ -218,6 +221,19 @@ hr{
 
 .extrato h2 {
     color: #007bff;
+    font-weight: bold;
+}
+
+.extrato label{
+    color: #007bff;
+    font-family: "Montserrat", sans-serif;
+    font-size: 25px;
+}
+
+.extrato select{
+    border-radius: 10px;
+    border-color: #0070BB;
+    color: #0070BB;
 }
 
 .extrato p {
@@ -259,10 +275,30 @@ hr{
 
 @media (min-width: 701px) {
     .grafico canvas {
-        max-width: 50%; /* Ajuste a largura máxima conforme necessário */
-        height: 10px;
-
+        max-width: 100%;
+        max-height: 600px;
     }
 }
 
+/* Estilo para o gráfico de pizza */
+.grafico-pizza {
+    max-width: 400px;
+    /* Largura máxima do gráfico */
+    margin: auto;
+    /* Centralizar o gráfico */
+}
 
+/* Ajustar o tamanho do gráfico para telas maiores que 700px */
+@media screen and (min-width: 700px) {
+    .grafico-pizza {
+        max-width: 500px;
+        /* Aumentar a largura para telas maiores */
+        margin-top: 20px;
+    }
+}
+
+.titulo_centro {
+    font-weight: bold;
+    color: #0070BB;
+    margin-top: 80px;
+}
