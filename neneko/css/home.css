@@ -122,7 +122,6 @@ body {
     margin-bottom: 20px;
 }
 
-
 .bv-home {
     display: flex;
     justify-content: center;
@@ -136,9 +135,13 @@ hr {
     border-width: 2px;
 }
 
+.list-group{
+    margin: 2px 20px;
+}
+
 .extrato {
     float: left;
-    width: calc(100% - 20px);
+    width: calc(99% - 20px);
     /* Ajusta o tamanho e leva em conta a margem */
     margin-top: 10px;
     margin-left: 10px;
@@ -146,14 +149,14 @@ hr {
     height: calc(81vh - 100px);
     overflow-y: auto;
     /* Adiciona uma barra de rolagem vertical */
-    border: 3px solid #0070BB;
+    border:  0.5px solid #ccc;
     /* Adiciona uma borda para demarcar o tamanho */
     border-radius: 10px;
 
     /* Estilização da barra de rolagem */
     scrollbar-width: thin;
     /* Para navegadores que suportam o padrão */
-    scrollbar-color: #0070BB #f0f0f0;
+    scrollbar-color: #0070BB #ccc;
     /* Cor da barra e cor de fundo */
 
     /* Estilos para navegadores WebKit (Chrome, Safari, Opera) */
@@ -176,7 +179,6 @@ hr {
         /* Borda da barra de rolagem */
     }
 }
-
 
 .modal {
     display: none;
@@ -219,13 +221,18 @@ hr {
     margin-top: 20px;
 }
 
+.extrato .fundo-extrato{
+    background-color: #0070BB;
+    padding: 1px;
+}
+
 .extrato h2 {
-    color: #007bff;
+    color: #FEFEFA;
     font-weight: bold;
 }
 
 .extrato label{
-    color: #007bff;
+    color: #0070BB;
     font-family: "Montserrat", sans-serif;
     font-size: 25px;
 }
@@ -269,8 +276,9 @@ hr {
 #addDespesaBtn,
 #editarMeta {
     display: block;
-    margin: 20px auto;
     text-align: center;
+    margin: 15px 20px;
+    border-radius: 10px;
 }
 
 @media (min-width: 701px) {
@@ -295,10 +303,38 @@ hr {
         /* Aumentar a largura para telas maiores */
         margin-top: 20px;
     }
+
+    .extrato {
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+}
+
+.titulo_centroM {
+    font-weight: bold;
+    color: #0070BB;
+    margin-top: 80px;
+    margin-left: 20px;
 }
 
 .titulo_centro {
     font-weight: bold;
     color: #0070BB;
     margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+@media (min-width: 700px) {
+    .grafico-pizza-container {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 10px;
+    }
+    .grafico-pizza {
+        flex: 1;
+        max-width: 35%;
+    }
 }

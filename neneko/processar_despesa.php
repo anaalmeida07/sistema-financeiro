@@ -7,12 +7,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $categoria = $_POST['categoria'];
     $conta_id = $_POST['conta_id'];
     $usuario_id = $_SESSION['usuario_id'];
-    $data_despesa = date('Y-m-d H:i:s');
 
     // Insere a despesa na tabela despesas_usuario
-    $sql = "INSERT INTO despesas_usuario (usuario_id, valor, conta_id, categoria, data_despesa) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO despesas_usuario (usuario_id, valor, conta_id, categoria, data_despesa) VALUES (?, ?, ?, ?, NOW())";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("idiss", $usuario_id, $valor, $conta_id, $categoria, $data_despesa);
+    $stmt->bind_param("idis", $usuario_id, $valor, $conta_id, $categoria);
 
     if ($stmt->execute()) {
         // Atualiza o saldo da conta bancária

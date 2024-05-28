@@ -17,7 +17,7 @@
         <h1>Neneko <img src="img/gatinho.png" alt="logo"></h1>
         <nav>
             <ul>
-                <li><a href="index.php">Voltar</a></li>
+                <li><a href="index.php">Home</a></li>
             </ul>
         </nav>
     </div>

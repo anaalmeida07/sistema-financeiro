@@ -49,7 +49,7 @@ session_start();
                 <label for="saldo">Saldo:</label>
                 <input type="text" id="saldo" name="saldo" required><br><br>
 
-                <input type="submit" value="Adicionar Conta">
+                <input type="submit" class="btn btn-outline-primary" value="Adicionar Conta">
             </form>
         </div>
     </div>
@@ -90,7 +90,7 @@ session_start();
                     ?>
                 </select><br><br>
 
-                <input type="submit" value="Adicionar Receita">
+                <input type="submit" class="btn btn-outline-primary" value="Adicionar Receita">
             </form>
         </div>
     </div>
@@ -128,7 +128,7 @@ session_start();
                     ?>
                 </select><br><br>
 
-                <input type="submit" value="Adicionar Despesa">
+                <input type="submit" class="btn btn-outline-primary" value="Adicionar Despesa">
             </form>
         </div>
     </div>
@@ -163,7 +163,10 @@ session_start();
 
     <!-- Extrato -->
     <div class="extrato">
-        <h2 class="bv-home">Extrato</h2>
+        <div class="fundo-extrato">
+            <h2 class="bv-home">Extrato</h2>
+        </div>
+        <br>
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <label for="filtro">Mostrar transações dos últimos:</label>
             <select name="filtro" id="filtro">
@@ -223,7 +226,7 @@ session_start();
 
     <!-- Gráfico -->
     <div class="grafico">
-        <h3 class="titulo_centro">Receitas x Despesas</h3>
+        <h3 class="titulo_centroM">Receitas x Despesas</h3>
         <canvas id="myChart"></canvas>
     </div>
 
@@ -303,10 +306,15 @@ session_start();
         });
     </script>
 
-    <h3 class="titulo_centro ">Divisão de Despesas nos últimos 7 dias</h3>
-    <!-- Gráfico de Pizza -->
-    <div class="grafico-pizza">
-        <canvas id="pieChart" width="700" height="700"></canvas>
+    <div class="grafico-pizza-container">
+        <div class="grafico-pizza">
+            <h3 class="titulo_centro ">Divisão de Despesas (7 dias)</h3>
+            <canvas id="pieChart" width="200" height="200"></canvas>
+        </div>
+        <div class="grafico-pizza">
+            <h3 class="titulo_centro ">Divisão de Saldo</h3>
+            <canvas id="pizzaChart" width="200" height="200"></canvas>
+        </div>
     </div>
 
     <script>
@@ -393,13 +401,6 @@ session_start();
             }
         });
     </script>
-
-
-    <h3 class="titulo_centro ">Divisão de Saldo</h3>
-    <!-- Gráfico de Pizza -->
-    <div class="grafico-pizza">
-        <canvas id="pizzaChart" width="700" height="700"></canvas>
-    </div>
 
     <script>
         <?php
