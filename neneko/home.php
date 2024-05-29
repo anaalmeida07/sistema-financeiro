@@ -34,6 +34,7 @@ session_start();
         <button type="button" id="addDespesaBtn" class="btn btn-outline-primary">Adicionar Nova Despesa</button>
     </div>
 
+
     <!-- Modal para adicionar conta bancária -->
     <div id="addContaModal" class="modal">
         <div class="modal-content">
@@ -64,13 +65,13 @@ session_start();
                 <input type="text" id="valor" name="valor" required><br><br>
 
                 <label for="categoria">Categoria:</label>
-                <select id="categoria" name="categoria">
+                <select id="categoria" name="categoria" class="estilo-select">
                     <option value="Salário">Salário</option>
                     <option value="Outra fonte de renda">Outra fonte de renda</option>
                 </select><br><br>
 
                 <label for="conta_destino">Conta de Destino:</label>
-                <select id="conta_destino" name="conta_destino" required>
+                <select id="conta_destino" class="estilo-select" name="conta_destino" required>
                     <?php
                     require_once 'conexao.php';
                     if (isset($_SESSION['usuario_id'])) {
@@ -108,7 +109,7 @@ session_start();
                 <input type="text" id="categoria" name="categoria" required><br><br>
 
                 <label for="conta_id">Conta de Origem:</label>
-                <select id="conta_id" name="conta_id" required>
+                <select id="conta_id" class="estilo-select" name="conta_id" required>
                     <?php
                     require_once 'conexao.php';
                     if (isset($_SESSION['usuario_id'])) {

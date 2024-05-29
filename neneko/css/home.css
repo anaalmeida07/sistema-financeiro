@@ -135,7 +135,7 @@ hr {
     border-width: 2px;
 }
 
-.list-group{
+.list-group {
     margin: 2px 20px;
 }
 
@@ -149,7 +149,7 @@ hr {
     height: calc(81vh - 100px);
     overflow-y: auto;
     /* Adiciona uma barra de rolagem vertical */
-    border:  0.5px solid #ccc;
+    border: 0.5px solid #ccc;
     /* Adiciona uma borda para demarcar o tamanho */
     border-radius: 10px;
 
@@ -215,33 +215,31 @@ hr {
     cursor: pointer;
 }
 
-/* Adicione isso ao seu CSS */
-/* Estilo para o extrato */
 .extrato {
     margin-top: 20px;
 }
 
-.extrato .fundo-extrato{
+.extrato .fundo-extrato {
     background-color: #0070BB;
     padding: 1px;
 }
 
-.extrato h2 {
-    color: #FEFEFA;
-    font-weight: bold;
-}
-
-.extrato label{
+.extrato label {
     color: #0070BB;
     font-family: "Montserrat", sans-serif;
-    font-size: 25px;
+    font-size: 19px;
 }
 
-.extrato select{
+.extrato select {
+    width: 20%;
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
     border-radius: 10px;
-    border-color: #0070BB;
-    color: #0070BB;
+    box-sizing: border-box;
 }
+
 
 .extrato p {
     margin-bottom: 5px;
@@ -281,6 +279,43 @@ hr {
     border-radius: 10px;
 }
 
+input[type="text"],
+.estilo-select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #0070BB;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
 @media (min-width: 701px) {
     .grafico canvas {
         max-width: 100%;
@@ -308,6 +343,22 @@ hr {
         margin-top: 20px;
         margin-left: 20px;
     }
+
+    .extrato select {
+        width: 20%;
+        padding: 10px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-sizing: border-box;
+    }
+
+    .extrato label {
+        color: #0070BB;
+        font-family: "Montserrat", sans-serif;
+        font-size: 25px;
+    }
 }
 
 .titulo_centroM {
@@ -333,6 +384,7 @@ hr {
         justify-content: space-around;
         margin-bottom: 10px;
     }
+
     .grafico-pizza {
         flex: 1;
         max-width: 35%;
