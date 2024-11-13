@@ -240,6 +240,10 @@ hr {
     box-sizing: border-box;
 }
 
+.extrato h2{
+    color: #FEFEFA;
+}
+
 
 .extrato p {
     margin-bottom: 5px;

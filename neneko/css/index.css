@@ -1,154 +1,165 @@
 /* Estilos gerais */
 body {
-    background-color: #0070BB;
+    background: linear-gradient(to right, #38b6ff, #1714b3);
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    font-family: "Montserrat", sans-serif;
-    /* Impede a rolagem horizontal */
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* Barra de navegação */
 .barra {
-    background-color: #0070BB;
-    color: #FEFEFA;
     display: flex;
     justify-content: space-between;
-    /* Adiciona espaçamento entre os itens */
     align-items: center;
     padding: 10px 20px;
+    background: linear-gradient(to right, #38b6ff, #1714b3);
     width: 100%;
-    position: relative;
-    /* Remover 'fixed' para tornar o menu não fixo */
-    z-index: 1;
-    /* Adicionar um z-index para garantir que o menu fique sobreposto a outros elementos */
 }
 
-/* Manter o h1 à esquerda do menu */
-.barra h1 {
-    margin: 0;
-    font-family: "Montserrat", sans-serif;
+.logotipo {
+    width: 82px;
+    height: 70px;
+}
+
+.menu-central,
+.menu-direita {
     display: flex;
-    align-items: center; /* Alinha o texto verticalmente com a imagem */
+    align-items: center;
 }
 
-/* Tamanho da imagem do gatinho igual ao texto */
-.barra h1 img {
-    height: 1em; /* Define a altura da imagem igual ao tamanho do texto */
-    margin-left: 5px; /* Adiciona um pequeno espaçamento entre o texto e a imagem */
-}
-
-/* Centralizar apenas as opções do menu */
-.barra nav ul {
-    list-style-type: none;
-    margin: 0;
+.menu-central ul,
+.menu-direita ul {
+    display: flex;
+    list-style: none;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    /* Centralizar as opções de menu */
+    margin: 0;
 }
 
-.barra nav ul li {
-    margin-right: 30px;
+.menu-central li,
+.menu-direita li {
+    font-size: 18px;
+    margin-right: 15px;
+    border: 2px solid #FEFEFA;
+    border-radius: 25px;
+    padding: 10px 20px;
 }
 
-.barra nav ul li:first-child {
-    margin-right: 30px;
-    /* Distância menor entre as opções */
-}
-
-.barra nav ul li a {
+.menu-central li a,
+.menu-direita li a {
     text-decoration: none;
     color: #FEFEFA;
-    font-family: "Montserrat", sans-serif;
 }
 
-@media screen and (max-width: 700px) {
-
-    /* Barra de navegação responsiva */
-    .barra {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .barra nav {
-        margin-top: 10px;
-    }
-
-    .barra nav ul {
-        margin-top: 10px;
-    }
-
-    .barra nav ul li {
-        display: block;
-        margin-bottom: 10px;
-    }
-
-    .content {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-@media screen and (max-width: 700px) {
-    /* Barra de navegação responsiva */
-    .barra {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .barra nav {
-        margin-top: 10px;
-    }
-
-    .barra nav ul {
-        margin-top: 10px;
-    }
-
-    .barra nav ul li {
-        display: block;
-        margin-bottom: 10px;
-    }
-
-    .content {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .corpo-index,
-    .img-index {
-        width: 100%;
-        text-align: center;
-    }
-
-    .corpo-index {
-        padding: 20px;
-    }
-}
-
-.h1-index {
+/* Página 1: Conteúdo principal */
+.h1-nome {
     color: #FEFEFA;
-    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    font-size: 200px;
+    font-weight: bold;
+    margin-top: 20px;
+    letter-spacing: -20px;
 }
 
-/* Adiciona flexbox para posicionar os elementos na página */
+.h2-subtitulo {
+    color: #FEFEFA;
+    text-align: center;
+    font-size: 24px;
+    margin-top: 2px;
+}
 
+/* Imagem com contorno */
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 80px;
+    background-color: #FEFEFA;
+    border-radius: 40px;
+    position: relative;
+    text-align: center;
+    z-index: 2;
+    height: 600px;
+}
 
-.img-index img {
+.img-exemplo {
     max-width: 100%;
     height: auto;
+    margin: auto;
+    margin-top: -440px;
+    width: 75%;
 }
 
-@media screen and (min-width: 700px) {
-    .h1-index {
+.h2-textoExemplo {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 50px;
+    color: #004aad;
+    padding: 10px;
+    z-index: 3;
+    white-space: nowrap;
+}
+
+/* Página 2: Seção "Sobre" */
+.sobre {
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.sobre h1.pag1 {
+    font-size: 75px;
+    font-weight: bold;
+    margin-top: 110px;
+}
+
+.sobre h2 {
+    font-size: 45px;
+    margin-top: 50px;
+    line-height: 1.5;
+}
+
+.sobre h1.pag2 {
+    font-size: 75px;
+    font-weight: bold;
+    margin-top: 110px;
+    text-align: right;
+    margin-right: 130px;
+}
+
+.sobre h2.pag2 {
+    font-size: 35px;
+    text-align: right;
+    margin-right: 130px;
+}
+
+/* Estilo da imagem na segunda página */
+.img-exemplo-pag2 {
+    max-width: 100%;
+    height: auto;
+    width: 75%;
+    display: flex;
+    float: left;
+    justify-content: space-between;
+}
+
+/* Responsividade */
+@media screen and (max-width: 700px) {
+    .h1-nome {
         font-size: 60px;
     }
 
-    .content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
+    .menu-central li,
+    .menu-direita li {
+        padding: 8px 15px;
+        font-size: 16px;
+    }
+
+    .h2-subtitulo,
+    .h2-textoExemplo {
+        font-size: 18px;
     }
 }
-
