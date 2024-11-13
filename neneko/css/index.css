@@ -52,7 +52,11 @@ body {
 }
 
 /* Página 1: Conteúdo principal */
-.h1-nome {
+.section--home {
+    text-align: center;
+}
+
+.title-main {
     color: #FEFEFA;
     text-align: center;
     font-size: 200px;
@@ -61,7 +65,7 @@ body {
     letter-spacing: -20px;
 }
 
-.h2-subtitulo {
+.subtitle-main {
     color: #FEFEFA;
     text-align: center;
     font-size: 24px;
@@ -82,84 +86,187 @@ body {
     height: 600px;
 }
 
-.img-exemplo {
+.img-example {
     max-width: 100%;
     height: auto;
     margin: auto;
-    margin-top: -440px;
-    width: 75%;
+    margin-top: -60px;
+    width: 700px;
+    border-radius: 40px;
 }
 
-.h2-textoExemplo {
+.text-example {
     position: absolute;
-    bottom: 100px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
     font-size: 50px;
     color: #004aad;
-    padding: 10px;
+    padding: 20px;
     z-index: 3;
     white-space: nowrap;
 }
 
 /* Página 2: Seção "Sobre" */
-.sobre {
+.section--about {
     text-align: center;
     color: white;
     padding: 20px;
+    margin: auto;
 }
 
-.sobre h1.pag1 {
-    font-size: 75px;
-    font-weight: bold;
-    margin-top: 110px;
-}
-
-.sobre h2 {
-    font-size: 45px;
-    margin-top: 50px;
-    line-height: 1.5;
-}
-
-.sobre h1.pag2 {
-    font-size: 75px;
-    font-weight: bold;
-    margin-top: 110px;
-    text-align: right;
-    margin-right: 130px;
-}
-
-.sobre h2.pag2 {
-    font-size: 35px;
-    text-align: right;
-    margin-right: 130px;
-}
-
-/* Estilo da imagem na segunda página */
-.img-exemplo-pag2 {
-    max-width: 100%;
-    height: auto;
-    width: 75%;
+/* Seção Introdução */
+.section-about__intro{
+    padding: 10px;
     display: flex;
-    float: left;
-    justify-content: space-between;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;     /* Centraliza verticalmente */
+    text-align: center;    
+    height: 100vh;  
+    flex-direction: column; 
+
 }
 
-/* Responsividade */
-@media screen and (max-width: 700px) {
-    .h1-nome {
-        font-size: 60px;
-    }
+.section-about__intro .intro-title {
+    font-size: 50px;
+    font-weight: bold;   
+}
 
-    .menu-central li,
-    .menu-direita li {
-        padding: 8px 15px;
-        font-size: 16px;
-    }
+.section-about__intro .intro-text {
+    font-size: 35px;
+    line-height: 1.5;
+    text-align: center;
+    margin-top: 20px; 
 
-    .h2-subtitulo,
-    .h2-textoExemplo {
-        font-size: 18px;
-    }
+   
+}
+/* Seção Cartões */
+.section-about__cards {
+    padding: 10px;
+    display: flex;
+    height: 100vh;  
+    flex-direction: row; /* Organiza os elementos em linha */
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilo da imagem */
+.section-about__cards .img-example-cards {
+    width: 45%; /* Ajusta a largura da imagem */
+    height: auto;
+    border-radius: 40px;
+}
+
+/* Contêiner de texto */
+.section-about__cards .text-container-cards {
+    width: 50%; /* Ajusta a largura do texto */
+    text-align: right; /* Alinha o texto à direita */
+    margin-left: 20px; /* Espaçamento entre a imagem e o texto */
+    margin-right: 15px;
+}
+
+.section-about__cards .cards-title {
+    font-size: 65px;
+    font-weight: bold;
+}
+
+.section-about__cards .cards-text {
+   margin-top: 1px;
+    font-size: 30px;
+    margin-top: 20px;
+    
+}
+
+
+/* Seção de gastos */
+.section-about__expenses {
+    padding: 10px;
+    display: flex;
+    height: 100vh;  
+    flex-direction: row; /* Mantém os elementos em linha */
+    justify-content: space-between; /* Espaça a imagem e o texto */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+/* Estilo da imagem */
+.section-about__expenses .img-example-expenses {
+    width: 50% ; /* Ajusta a largura da imagem */
+    height: auto;
+    border-radius: 40px;
+}
+
+/* Contêiner de texto */
+.section-about__expenses .text-container-expenses {
+    width: 50%; /* Ajusta a largura do texto */
+    text-align: left; /* Alinha o texto à direita */
+    margin-left: 15 px; /* Espaçamento entre a imagem e o texto */
+    margin-right: 25px;
+}
+
+.section-about__expenses .expenses-title {
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.section-about__expenses .expenses-text {
+    margin-top: 1px;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+
+
+/* Seção de start */
+/* Seção de início */
+.section-about__start {
+    padding: 10px;
+    display: flex;
+    flex-direction: column; /* Coloca elementos em coluna */
+    align-items: center; /* Centraliza os elementos */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Contêiner de texto */
+.section-about__start .text-container-start {
+    width: 100%; /* Pode ajustar conforme necessário */
+}
+
+/* Estilo do título */
+.section-about__start .start-title {
+    white-space: nowrap; /* Impede quebra de linha */
+    font-size: 60px; /* Ajuste conforme necessário */
+    margin-bottom: 60px; /* Espaço entre o título e os botões */
+}
+
+/* Estilo dos botões */
+.section-about__start .menu-iniciar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espaçamento entre os botões */
+}
+
+.section-about__start .menu-iniciar li {
+    display: inline;
+}
+
+.section-about__start .menu-iniciar a {
+    text-decoration: none;
+    color: #FEFEFA; /* Ajuste conforme o tema */
+    border: 2px solid #FEFEFA;
+    border-radius: 25px;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+}
+
+
+/* Estilo da imagem */
+.section-about__start .img-example-start {
+    width: 85%; /* Ajuste conforme necessário */
+    height: auto;
+    border-radius: 20px;
+    margin-top: 40px; /* Espaço entre os botões e a imagem */
+  
 }
