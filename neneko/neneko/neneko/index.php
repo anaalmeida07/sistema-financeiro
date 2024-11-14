@@ -28,7 +28,7 @@
         <!-- Menu Direito -->
         <nav class="menu-direita">
             <ul>
-                <li><a href="cadastro-tela.php">Cadastrar</a></li>
+                <li><a href="cadastrar.php">Cadastrar</a></li>
                 <li><a href="login.php">Entrar</a></li>
             </ul>
         </nav>
@@ -56,37 +56,12 @@
         </div>
 
         <div id="section-about-cards" class="section-about__cards">
-        <img src="img/exemplo.png" alt="exemplo" class="img-example-cards">  
-        <div class="text-container-cards">
-        <h1 class="cards-title"><strong>Gerencie seus<br> cartões de forma <br> simples</strong></h1>
-        <h2 class="cards-text">Com o NENEKO, você tem<br> o controle total sobre seus <br> cartões em um só lugar.</h2>
-    </div>
+            <h1 class="cards-title"><strong>Gerencie seus<br> cartões de forma <br> simples</strong></h1>
+            <h2 class="cards-text">Acompanhe seus gastos,<br>organize suas faturas e evite <br>surpresas no final do mês.</h2>
+            <img src="img/exemplo.png" alt="exemplo" class="img-example-cards">
         </div>
 
-        <div id="section-about-expenses" class="section-about__expenses">
-        
-        <div class="text-container-expenses">
-        <h1 class="expenses-title"><strong>Simples, rápido e<br> sem complicação</strong></h1>
-        <h2 class="expenses-text">Acompanhe seus gastos, <br>organize suas faturas e evite <br>surpresas no final do mês.</h2>
-          
     </div>
-    <img src="img/exemplo.png" alt="exemplo" class="img-example-expenses">
-        </div>
-
-        <div id="section-about-start" class="section-about__start">
-    <div class="text-container-start">
-        <h1 class="start-title"><strong>Não perca tempo, comece já!</strong></h1>
-        
-        <div class="menu-iniciar">
-            <ul>
-                <li><a href="login.php">Entrar</a></li>
-                <li><a href="login.php">Cadastrar</a></li>
-            </ul>
-        </div>
-
-        <img src="img/exemplo.png" alt="exemplo" class="img-example-start">
-    </div>
-</div>
 </body>
 
 </html>

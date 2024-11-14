@@ -23,38 +23,45 @@
     </div>
 
     <div class="conteudo">
-        <form method="post" action="logar.php" class="form login">
-            <div class="title-login">
+    <div class="title-login">
                 <h1 class="title-card-login">NENEKO</h1>
-                <h1 class="subtitle-card-login">Faça o login para ter acesso a sua conta!</h1>
+                <h1 class="subtitle-card-login">Cadastre-se e tenha controle total do seu dinheiro</h1>
+            </div>
+        <form method="post" action="logar.php" class="form login">
+           
+
+            
+            <div class="input-container ic1">
+            <label for="user-name" class="placeholder">Nome</label>    <br>  
+            <input id="user-name" class="input" type="text" name="user-name" placeholder=" " />
+                
             </div>
 
-            <div class="input-container ic1">
-                <label for="login-email" class="placeholder">E-mail</label>
+            <div class="input-container ic2">
+                <label for="login-email" class="placeholder">E-mail</label><br> 
                 <input id="login-email" class="input" type="email" name="email" placeholder="" />
                 
             </div>
-            <div class="input-container ic2">
-            <label for="login-password" class="placeholder">Senha</label>      
+            <div class="input-container ic3">
+            <label for="login-password" class="placeholder">Senha</label> <br>      
             <input id="login-password" class="input" type="password" name="senha" placeholder=" " />
                 
             </div>
-         <!-- Link para recuperação de senha -->
-   <div class="link-container">
-                <a href="recuperar_senha.php" class="forgot-password-link">Esqueci minha senha</a>
-            </div>
-<div class="link-container">
 
-<!-- Botão de entrar -->
-<button type="submit" class="submit">Entrar</button>
-</div>
-            
+            <div class="input-container ic4">
+            <label for="confirm-login-password" class="placeholder">Confirmação de senha</label>      
+            <input id="confirm-login-password" class="input" type="password" name="confirm-senha" placeholder=" " />
+                
+            </div>
+
+            <!-- Botão de entrar -->
+            <button type="submit" class="submit">Cadastrar</button>
 
          
 
             <!-- Link para criar uma nova conta -->
             <div class="link-container">
-                <a href="cadastro-tela.php" class="create-account-link">Não tem conta ainda? <strong ><br>Crie a sua agora!</strong></a>
+                <a href="login.php" class="create-account-link">Já possui uma conta? <strong >Clique aqui para entrar</strong></a>
             </div>
         </form>
     </div>

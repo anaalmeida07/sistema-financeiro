@@ -141,51 +141,132 @@ body {
 
    
 }
-
-/* Seção Cartões*/
-.section-about__cards{
+/* Seção Cartões */
+.section-about__cards {
     padding: 10px;
     display: flex;
-    /* Centraliza verticalmente */
-    text-align: right;    
     height: 100vh;  
-    flex-direction: column; 
-    justify-content:  flex-start;
+    flex-direction: row; /* Organiza os elementos em linha */
+    justify-content: space-between;
+    align-items: center;
+}
 
+/* Estilo da imagem */
+.section-about__cards .img-example-cards {
+    width: 45%; /* Ajusta a largura da imagem */
+    height: auto;
+    border-radius: 40px;
+}
+
+/* Contêiner de texto */
+.section-about__cards .text-container-cards {
+    width: 50%; /* Ajusta a largura do texto */
+    text-align: right; /* Alinha o texto à direita */
+    margin-left: 20px; /* Espaçamento entre a imagem e o texto */
+    margin-right: 15px;
 }
 
 .section-about__cards .cards-title {
-    margin-right: 100px;
-    font-size: 75px;
+    font-size: 65px;
     font-weight: bold;
-    text-align: right;
-    align-items: right;
-    justify-content: right;
-    
 }
 
 .section-about__cards .cards-text {
-    font-size: 35px;
-    text-align: right;
-    margin-top: 20px; 
-    margin-right: 100px;
+   margin-top: 1px;
+    font-size: 30px;
+    margin-top: 20px;
+    
 }
 
-/* Estilo da imagem na seção de cartões */
-.section-about__cards .img-example-cards {
-    max-width: 100%;
-    height: auto;
-    margin: auto;
-    width: 10px;
-    border-radius: 40px;
-    display: flex;
-    justify-content: space-between;
-    max-width: 100%;
-    height: auto;
-    border-radius: 40px;
-    width: 700px;
-    float: left; /* Faz a imagem flutuar à esquerda */
-    margin-left: 100px; /* Adiciona espaço entre a imagem e o texto */
-    
 
+/* Seção de gastos */
+.section-about__expenses {
+    padding: 10px;
+    display: flex;
+    height: 100vh;  
+    flex-direction: row; /* Mantém os elementos em linha */
+    justify-content: space-between; /* Espaça a imagem e o texto */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+/* Estilo da imagem */
+.section-about__expenses .img-example-expenses {
+    width: 50% ; /* Ajusta a largura da imagem */
+    height: auto;
+    border-radius: 40px;
+}
+
+/* Contêiner de texto */
+.section-about__expenses .text-container-expenses {
+    width: 50%; /* Ajusta a largura do texto */
+    text-align: left; /* Alinha o texto à direita */
+    margin-left: 15 px; /* Espaçamento entre a imagem e o texto */
+    margin-right: 25px;
+}
+
+.section-about__expenses .expenses-title {
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.section-about__expenses .expenses-text {
+    margin-top: 1px;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+
+
+/* Seção de start */
+/* Seção de início */
+.section-about__start {
+    padding: 10px;
+    display: flex;
+    flex-direction: column; /* Coloca elementos em coluna */
+    align-items: center; /* Centraliza os elementos */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Contêiner de texto */
+.section-about__start .text-container-start {
+    width: 100%; /* Pode ajustar conforme necessário */
+}
+
+/* Estilo do título */
+.section-about__start .start-title {
+    white-space: nowrap; /* Impede quebra de linha */
+    font-size: 60px; /* Ajuste conforme necessário */
+    margin-bottom: 60px; /* Espaço entre o título e os botões */
+}
+
+/* Estilo dos botões */
+.section-about__start .menu-iniciar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espaçamento entre os botões */
+}
+
+.section-about__start .menu-iniciar li {
+    display: inline;
+}
+
+.section-about__start .menu-iniciar a {
+    text-decoration: none;
+    color: #FEFEFA; /* Ajuste conforme o tema */
+    border: 2px solid #FEFEFA;
+    border-radius: 25px;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+}
+
+
+/* Estilo da imagem */
+.section-about__start .img-example-start {
+    width: 85%; /* Ajuste conforme necessário */
+    height: auto;
+    border-radius: 20px;
+    margin-top: 40px; /* Espaço entre os botões e a imagem */
+  
 }
