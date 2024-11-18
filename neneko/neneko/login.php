@@ -14,63 +14,84 @@
 
 <body>
     <div class="barra">
-        <img src="img/gatinho.png" alt="logo" class="img-barra">
+        <h1>Neneko <img src="img/gatinho.png" alt="logo"></h1>
         <nav>
             <ul>
                 <li><a href="index.php">Home</a></li>
             </ul>
         </nav>
     </div>
-
     <div class="conteudo">
-        <form method="post" action="logar.php" class="form login">
-            <div class="title-login">
-                <h1 class="title-card-login">NENEKO</h1>
-                <h1 class="subtitle-card-login">Faça o login para ter acesso a sua conta!</h1>
-            </div>
-
-            <div class="input-container ic1">
-                <label for="login-email" class="placeholder">E-mail</label>
-                <input id="login-email" class="input" type="email" name="email" placeholder="" />
-                
-            </div>
-            <div class="input-container ic2">
-            <label for="login-password" class="placeholder">Senha</label>      
-            <input id="login-password" class="input" type="password" name="senha" placeholder=" " />
-                
-            </div>
-         <!-- Link para recuperação de senha -->
-   <div class="link-container">
-                <a href="recuperar_senha.php" class="forgot-password-link">Esqueci minha senha</a>
-            </div>
-<div class="link-container">
-
-<!-- Botão de entrar -->
-<button type="submit" class="submit">Entrar</button>
-</div>
-            
-
-         
-
-            <!-- Link para criar uma nova conta -->
-            <div class="link-container">
-                <a href="cadastro-tela.php" class="create-account-link">Não tem conta ainda? <strong ><br>Crie a sua agora!</strong></a>
-            </div>
+        <form method="post" action="logar.php">
+            <div class="form login">
+                <div class="title">Login</div>
+                <div class="input-container ic1">
+                    <input id="login-email" class="input" type="email" name="email" placeholder=" " />
+                    <div class="cut"></div>
+                    <label for="login-email" class="placeholder">E-mail</label>
+                </div>
+                <div class="input-container ic2">
+                    <input id="login-password" class="input" type="password" name="senha" placeholder=" " />
+                    <div class="cut cut-short"></div>
+                    <label for="login-password" class="placeholder">Senha</label>
+                </div>
+                <button type="text" class="submit">Entrar</button>
         </form>
     </div>
+    <div class="form cadastro">
+        <form method="post" action="cadastro.php">
+            <div class="title">Cadastro</div>
+            <div class="input-container ic1">
+                <input id="cadastro-email" class="input" type="email" name="email" placeholder=" " />
+                <div class="cut"></div>
+                <label for="cadastro-email" class="placeholder">E-mail</label>
+            </div>
+            <div class="input-container ic2">
+                <input id="cadastro-nome" class="input" type="text" name="nome" placeholder=" " />
+                <div class="cut"></div>
+                <label for="cadastro-nome" class="placeholder">Nome</label>
+            </div>
+            <div class="input-container ic2">
+                <input id="cadastro-password" class="input" type="password" name="senha" placeholder=" " />
+                <div class="cut cut-short"></div>
+                <label for="cadastro-password" class="placeholder">Senha</label>
+            </div>
+            <button type="submit" class="submit" id="btn-cadastrar">Cadastrar</button>
+    </div>
+    </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verifica se o parâmetro 'cadastro' está presente na URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const cadastroSuccess = urlParams.has('cadastro') && urlParams.get('cadastro') === 'sucesso';
+
+            // Se 'cadastroSuccess' for verdadeiro, exibe o alerta
+            if (cadastroSuccess) {
+                alert("Cadastro realizado com sucesso!");
+            }
+        });
+    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Verifica se o parâmetro 'erro' está presente na URL
             const urlParams = new URLSearchParams(window.location.search);
             const erro = urlParams.get('erro');
 
+            // Se 'erro' for 'senha', exibe o alerta de senha incorreta
             if (erro === 'senha') {
                 alert("Senha incorreta!");
-            } else if (erro === 'usuario') {
+            }
+            // Se 'erro' for 'usuario', exibe o alerta de usuário não encontrado
+            else if (erro === 'usuario') {
                 alert("Usuário não encontrado!");
             }
         });
     </script>
+    </div>
+
+
+
 </body>
 
 </html>
