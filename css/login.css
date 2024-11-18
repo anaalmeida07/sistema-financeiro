@@ -1,0 +1,119 @@
+/* Estilos gerais */
+body {
+    background-color: #fefefa;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Centralizar a seção do formulário */
+.conteudo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+/* Formulário de login */
+.form {
+    background: linear-gradient(to right, #38b6ff, #1714b3);
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 40px 50px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Título principal */
+.title-login h1 {
+    font-size: 50px;
+    color: #fefefa;
+    margin: 0;
+    text-align: center;
+}
+
+/* Subtítulo */
+.subtitle-card-login {
+    font-size: 16px;
+    color: #fefefa;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Campos de entrada */
+.input-container {
+    width: 100%;
+    position: relative;
+    margin-bottom: 15px;
+    
+}
+
+.input {
+    background-color: #fefefa;
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.placeholder {
+    color: #1714b3;
+    margin: auto;
+    
+    
+
+}
+
+/* Botão de envio */
+.submit {
+    background-color: #fefefa;
+    border: none;
+    border-radius: 12px;
+    color: #1714b3;
+    font-size: 18px;
+    padding: 10px 0;
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Links adicionais */
+.form a {
+    color: #fefefa;
+    font-size: 14px;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.form a:hover {
+    text-decoration: underline;
+}
+
+/* Ajustes para a barra de navegação */
+.barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fefefa;
+    padding: 10px 20px;
+}
+
+.img-barra {
+    width: 5%;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .form {
+        width: 90%;
+        padding: 20px;
+    }
+}

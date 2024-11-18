@@ -1,0 +1,272 @@
+/* Estilos gerais */
+body {
+    background: linear-gradient(to right, #38b6ff, #1714b3);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Barra de navegação */
+.barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #38b6ff, #1714b3);
+    width: 100%;
+}
+
+.logotipo {
+    width: 82px;
+    height: 70px;
+}
+
+.menu-central,
+.menu-direita {
+    display: flex;
+    align-items: center;
+}
+
+.menu-central ul,
+.menu-direita ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-central li,
+.menu-direita li {
+    font-size: 18px;
+    margin-right: 15px;
+    border: 2px solid #FEFEFA;
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+
+.menu-central li a,
+.menu-direita li a {
+    text-decoration: none;
+    color: #FEFEFA;
+}
+
+/* Página 1: Conteúdo principal */
+.section--home {
+    text-align: center;
+}
+
+.title-main {
+    color: #FEFEFA;
+    text-align: center;
+    font-size: 200px;
+    font-weight: bold;
+    margin-top: 20px;
+    letter-spacing: -20px;
+}
+
+.subtitle-main {
+    color: #FEFEFA;
+    text-align: center;
+    font-size: 24px;
+    margin-top: 2px;
+}
+
+/* Imagem com contorno */
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 80px;
+    background-color: #FEFEFA;
+    border-radius: 40px;
+    position: relative;
+    text-align: center;
+    z-index: 2;
+    height: 600px;
+}
+
+.img-example {
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+    margin-top: -60px;
+    width: 700px;
+    border-radius: 40px;
+}
+
+.text-example {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 50px;
+    color: #004aad;
+    padding: 20px;
+    z-index: 3;
+    white-space: nowrap;
+}
+
+/* Página 2: Seção "Sobre" */
+.section--about {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    margin: auto;
+}
+
+/* Seção Introdução */
+.section-about__intro{
+    padding: 10px;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;     /* Centraliza verticalmente */
+    text-align: center;    
+    height: 100vh;  
+    flex-direction: column; 
+
+}
+
+.section-about__intro .intro-title {
+    font-size: 50px;
+    font-weight: bold;   
+}
+
+.section-about__intro .intro-text {
+    font-size: 35px;
+    line-height: 1.5;
+    text-align: center;
+    margin-top: 20px; 
+
+   
+}
+/* Seção Cartões */
+.section-about__cards {
+    padding: 10px;
+    display: flex;
+    height: 100vh;  
+    flex-direction: row; /* Organiza os elementos em linha */
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilo da imagem */
+.section-about__cards .img-example-cards {
+    width: 45%; /* Ajusta a largura da imagem */
+    height: auto;
+    border-radius: 40px;
+}
+
+/* Contêiner de texto */
+.section-about__cards .text-container-cards {
+    width: 50%; /* Ajusta a largura do texto */
+    text-align: right; /* Alinha o texto à direita */
+    margin-left: 20px; /* Espaçamento entre a imagem e o texto */
+    margin-right: 15px;
+}
+
+.section-about__cards .cards-title {
+    font-size: 65px;
+    font-weight: bold;
+}
+
+.section-about__cards .cards-text {
+   margin-top: 1px;
+    font-size: 30px;
+    margin-top: 20px;
+    
+}
+
+
+/* Seção de gastos */
+.section-about__expenses {
+    padding: 10px;
+    display: flex;
+    height: 100vh;  
+    flex-direction: row; /* Mantém os elementos em linha */
+    justify-content: space-between; /* Espaça a imagem e o texto */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+/* Estilo da imagem */
+.section-about__expenses .img-example-expenses {
+    width: 50% ; /* Ajusta a largura da imagem */
+    height: auto;
+    border-radius: 40px;
+}
+
+/* Contêiner de texto */
+.section-about__expenses .text-container-expenses {
+    width: 50%; /* Ajusta a largura do texto */
+    text-align: left; /* Alinha o texto à direita */
+    margin-left: 15 px; /* Espaçamento entre a imagem e o texto */
+    margin-right: 25px;
+}
+
+.section-about__expenses .expenses-title {
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.section-about__expenses .expenses-text {
+    margin-top: 1px;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+
+
+/* Seção de start */
+/* Seção de início */
+.section-about__start {
+    padding: 10px;
+    display: flex;
+    flex-direction: column; /* Coloca elementos em coluna */
+    align-items: center; /* Centraliza os elementos */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Contêiner de texto */
+.section-about__start .text-container-start {
+    width: 100%; /* Pode ajustar conforme necessário */
+}
+
+/* Estilo do título */
+.section-about__start .start-title {
+    white-space: nowrap; /* Impede quebra de linha */
+    font-size: 60px; /* Ajuste conforme necessário */
+    margin-bottom: 60px; /* Espaço entre o título e os botões */
+}
+
+/* Estilo dos botões */
+.section-about__start .menu-iniciar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espaçamento entre os botões */
+}
+
+.section-about__start .menu-iniciar li {
+    display: inline;
+}
+
+.section-about__start .menu-iniciar a {
+    text-decoration: none;
+    color: #FEFEFA; /* Ajuste conforme o tema */
+    border: 2px solid #FEFEFA;
+    border-radius: 25px;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+}
+
+
+/* Estilo da imagem */
+.section-about__start .img-example-start {
+    width: 85%; /* Ajuste conforme necessário */
+    height: auto;
+    border-radius: 20px;
+    margin-top: 40px; /* Espaço entre os botões e a imagem */
+  
+}
