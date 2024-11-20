@@ -34,15 +34,31 @@ session_start();
         <button type="button" id="addDespesaBtn" class="btn btn-outline-primary">Adicionar Nova Despesa</button>
     </div>
 
-
     <!-- Modal para adicionar conta bancária -->
     <div id="addContaModal" class="modal">
         <div class="modal-content">
             <span class="close" id="closeContaModal">&times;</span>
             <h2>Adicionar Nova Conta Bancária</h2>
             <form action="adicionar_conta.php" method="post">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required><br><br>
+                <label for="nome">Banco:</label>
+                <select class="form-select" id="nome" name="nome" required>
+                    <option value="" selected disabled>Selecione um banco</option>
+                    <option value="Itaú">Itaú</option>
+                    <option value="Bradesco">Bradesco</option>
+                    <option value="Banco do Brasil">Banco do Brasil</option>
+                    <option value="Santander">Santander</option>
+                    <option value="BTG Pactual">BTG Pactual</option>
+                    <option value="Nubank">Nubank</option>
+                    <option value="Inter">Inter</option>
+                    <option value="Banco PAN">Banco PAN</option>
+                    <option value="Sofisa">Sofisa</option>
+                    <option value="Banco de Brasília">Banco de Brasília</option>
+                    <option value="Iti">Iti</option>
+                    <option value="Picpay">Picpay</option>
+                    <option value="BMG">BMG</option>
+                    <option value="C6">C6</option>
+                    <option value="Banrisul">Banrisul</option>
+                </select><br><br>
 
                 <label for="tipo_conta">Tipo de Conta:</label>
                 <input type="text" id="tipo_conta" name="tipo_conta" required><br><br>
@@ -134,10 +150,38 @@ session_start();
         </div>
     </div>
 
-    <div class="list-group">
+    <h1>
+        Total em conta: R$
         <?php
         require_once 'conexao.php';
-        //echo "<li class='list-group-item active' aria-current='true'>Contas Bancárias</li>";
+        if (isset($_SESSION['usuario_id'])) {
+            $usuario_id = $_SESSION['usuario_id'];
+
+            // SQL para somar os saldos das contas bancárias
+            $sql = "SELECT SUM(saldo) as total_saldo FROM contas_bancarias WHERE usuario_id = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $usuario_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                // Exibe o total do saldo, com formatação monetária
+                echo number_format($row['total_saldo'], 2, ',', '.');
+            } else {
+                echo "0,00";  // Caso não haja saldo ou contas
+            }
+            $stmt->close();
+        } else {
+            echo "0,00";  // Caso não haja um usuário logado
+        }
+        ?>
+    </h1>
+
+    <div class="row">
+        <?php
+        require_once 'conexao.php';
+
         if (isset($_SESSION['usuario_id'])) {
             $usuario_id = $_SESSION['usuario_id'];
             $sql = "SELECT nome, saldo FROM contas_bancarias WHERE usuario_id = ?";
@@ -145,85 +189,56 @@ session_start();
             $stmt->bind_param("i", $usuario_id);
             $stmt->execute();
             $result = $stmt->get_result();
+
+            // Array associando os bancos às imagens correspondentes
+            $bancosLogos = [
+                'ITAú' => 'logo-itau.png',
+                'BRADESCO' => 'logo-bradesco.png',
+                'BANCO DO BRASIL' => 'logo-bb.png',
+                'SANTANDER' => 'logo-santander.png',
+                'BTG PACTUAL' => 'logo-btg.png',
+                'NUBANK' => 'logo-nubank.png',
+                'INTER' => 'logo-inter.png',
+                'BANCO PAN' => 'logo-pan.png',
+                'SOFISA' => 'logo-sofisa.png',
+                'BANCO DE BRASíLIA' => 'logo-brasilia.png',
+                'ITI' => 'logo-iti.png',
+                'PICPAY' => 'logo-picpay.png',
+                'BMG' => 'logo-bmg.png',
+                'C6' => 'logo-c6.png',
+                'BANRISUL' => 'logo-banrisul.png'
+            ];
+
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    echo "<a class='list-group-item list-group-item-action'>";
-                    echo "<h5 class='mb-1'>{$row['nome']}</h5>";
-                    echo "<p class='mb-1'>Saldo: R$ {$row['saldo']}</p>";
-                    echo "</a>";
+                    // Converte o nome do banco para uppercase e verifica se existe no array
+                    $bancoNome = strtoupper(trim($row['nome'])); // Converte para uppercase e remove espaços
+                    $logo = isset($bancosLogos[$bancoNome]) ? $bancosLogos[$bancoNome] : 'iconExemplo.png'; // Usa logo padrão se não encontrar
+
+                    echo "<div class='col-md-4 mb-4'>";  // 3 cards por linha
+                    echo "<div class='card'>";
+                    echo "<img src='img/$logo' class='card-img-top' alt='$bancoNome' style='height: 150px; object-fit: cover;'>";
+                    echo "<div class='card-body'>";
+                    echo "<h5 class='card-title'>{$row['nome']}</h5>";
+                    echo "<p class='card-text'>Saldo: R$ " . number_format($row['saldo'], 2, ',', '.') . "</p>";
+                    echo "</div>"; // Fecha card-body
+                    echo "</div>"; // Fecha card
+                    echo "</div>"; // Fecha col-md-4
                 }
             } else {
-                echo "<p class='list-group-item'>Nenhuma conta bancária encontrada.</p>";
+                echo "<p class='col-12'>Nenhuma conta bancária encontrada.</p>";
             }
             $stmt->close();
         } else {
-            echo "<p class='list-group-item'>Nenhum usuário logado.</p>";
+            echo "<p class='col-12'>Nenhum usuário logado.</p>";
         }
         ?>
     </div>
 
-    <!-- Extrato -->
-    <div class="extrato">
-        <div class="fundo-extrato">
-            <h2 class="bv-home">Extrato</h2>
-        </div>
-        <br>
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-            <label for="filtro">Mostrar transações dos últimos:</label>
-            <select name="filtro" id="filtro">
-                <option value="5">5 dias</option>
-                <option value="10">10 dias</option>
-                <option value="30">30 dias</option>
-            </select>
-            <button type="submit" class="btn btn-primary">Filtrar</button>
-        </form>
-        <hr>
-        <?php
-        require_once 'conexao.php';
-        if (isset($_SESSION['usuario_id'])) {
-            $usuario_id = $_SESSION['usuario_id'];
-
-            // Verificar se o filtro foi enviado
-            $filtro_dias = isset($_POST['filtro']) ? $_POST['filtro'] : 5;
-
-            $sql = "
-            SELECT 'despesa' AS tipo, valor, categoria, data_despesa AS data, cb.nome AS conta
-            FROM despesas_usuario du
-            JOIN contas_bancarias cb ON du.conta_id = cb.id
-            WHERE du.usuario_id = ? AND data_despesa >= DATE_SUB(CURDATE(), INTERVAL $filtro_dias DAY)
-            UNION
-            SELECT 'receita' AS tipo, valor, categoria, data_recebimento AS data, cb.nome AS conta
-            FROM receitas_usuario ru
-            JOIN contas_bancarias cb ON ru.conta_destino_id = cb.id
-            WHERE ru.usuario_id = ? AND data_recebimento >= DATE_SUB(CURDATE(), INTERVAL $filtro_dias DAY)
-            ORDER BY data DESC
-        ";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ii", $usuario_id, $usuario_id);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    if ($row['tipo'] == 'despesa') {
-                        echo "<p class='despesa'>Despesa: - R$ {$row['valor']} ({$row['categoria']})</p>";
-                    } elseif ($row['tipo'] == 'receita') {
-                        echo "<p class='receita'>Receita: + R$ {$row['valor']} ({$row['categoria']})</p>";
-                    }
-                    echo "<p class='conta'>Conta: {$row['conta']}</p>";
-                    echo "<p class='data'>Data: {$row['data']}</p>";
-                    echo "<hr>";
-                }
-            } else {
-                echo "<p class='bv-home'>Nenhum registro de transação nos últimos $filtro_dias dias.</p>";
-            }
-            $stmt->close();
-        } else {
-            echo "<p class='bv-home'>Nenhum usuário logado.</p>";
-        }
-        ?>
-    </div>
-
-
+    <!-- Botão que leva pro extrato -->
+    <a href="extrato.php">
+        <button type="button" class="btn btn-outline-primary">Confira seu extrato aqui</button>
+    </a>
 
     <!-- Gráfico -->
     <div class="grafico">

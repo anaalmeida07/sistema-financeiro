@@ -117,52 +117,60 @@ body {
 }
 
 /* Seção Introdução */
-.section-about__intro{
+.section-about__intro {
     padding: 10px;
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center;     /* Centraliza verticalmente */
-    text-align: center;    
-    height: 100vh;  
-    flex-direction: column; 
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+    text-align: center;
+    height: 100vh;
+    flex-direction: column;
 
 }
 
 .section-about__intro .intro-title {
     font-size: 50px;
-    font-weight: bold;   
+    font-weight: bold;
 }
 
 .section-about__intro .intro-text {
     font-size: 35px;
     line-height: 1.5;
     text-align: center;
-    margin-top: 20px; 
+    margin-top: 20px;
 
-   
+
 }
+
 /* Seção Cartões */
 .section-about__cards {
     padding: 10px;
     display: flex;
-    height: 100vh;  
-    flex-direction: row; /* Organiza os elementos em linha */
+    height: 100vh;
+    flex-direction: row;
+    /* Organiza os elementos em linha */
     justify-content: space-between;
     align-items: center;
 }
 
 /* Estilo da imagem */
 .section-about__cards .img-example-cards {
-    width: 45%; /* Ajusta a largura da imagem */
+    width: 45%;
+    /* Ajusta a largura da imagem */
     height: auto;
     border-radius: 40px;
 }
 
 /* Contêiner de texto */
 .section-about__cards .text-container-cards {
-    width: 50%; /* Ajusta a largura do texto */
-    text-align: right; /* Alinha o texto à direita */
-    margin-left: 20px; /* Espaçamento entre a imagem e o texto */
+    width: 50%;
+    /* Ajusta a largura do texto */
+    text-align: right;
+    /* Alinha o texto à direita */
+    margin-left: 20px;
+    /* Espaçamento entre a imagem e o texto */
     margin-right: 15px;
 }
 
@@ -172,10 +180,10 @@ body {
 }
 
 .section-about__cards .cards-text {
-   margin-top: 1px;
+    margin-top: 1px;
     font-size: 30px;
     margin-top: 20px;
-    
+
 }
 
 
@@ -183,24 +191,31 @@ body {
 .section-about__expenses {
     padding: 10px;
     display: flex;
-    height: 100vh;  
-    flex-direction: row; /* Mantém os elementos em linha */
-    justify-content: space-between; /* Espaça a imagem e o texto */
-    align-items: center; /* Centraliza verticalmente */
+    height: 100vh;
+    flex-direction: row;
+    /* Mantém os elementos em linha */
+    justify-content: space-between;
+    /* Espaça a imagem e o texto */
+    align-items: center;
+    /* Centraliza verticalmente */
 }
 
 /* Estilo da imagem */
 .section-about__expenses .img-example-expenses {
-    width: 50% ; /* Ajusta a largura da imagem */
+    width: 50%;
+    /* Ajusta a largura da imagem */
     height: auto;
     border-radius: 40px;
 }
 
 /* Contêiner de texto */
 .section-about__expenses .text-container-expenses {
-    width: 50%; /* Ajusta a largura do texto */
-    text-align: left; /* Alinha o texto à direita */
-    margin-left: 15 px; /* Espaçamento entre a imagem e o texto */
+    width: 50%;
+    /* Ajusta a largura do texto */
+    text-align: left;
+    /* Alinha o texto à direita */
+    margin-left: 15 px;
+    /* Espaçamento entre a imagem e o texto */
     margin-right: 25px;
 }
 
@@ -222,21 +237,28 @@ body {
 .section-about__start {
     padding: 10px;
     display: flex;
-    flex-direction: column; /* Coloca elementos em coluna */
-    align-items: center; /* Centraliza os elementos */
-    text-align: center; /* Centraliza o texto */
+    flex-direction: column;
+    /* Coloca elementos em coluna */
+    align-items: center;
+    /* Centraliza os elementos */
+    text-align: center;
+    /* Centraliza o texto */
 }
 
 /* Contêiner de texto */
 .section-about__start .text-container-start {
-    width: 100%; /* Pode ajustar conforme necessário */
+    width: 100%;
+    /* Pode ajustar conforme necessário */
 }
 
 /* Estilo do título */
 .section-about__start .start-title {
-    white-space: nowrap; /* Impede quebra de linha */
-    font-size: 60px; /* Ajuste conforme necessário */
-    margin-bottom: 60px; /* Espaço entre o título e os botões */
+    white-space: nowrap;
+    /* Impede quebra de linha */
+    font-size: 60px;
+    /* Ajuste conforme necessário */
+    margin-bottom: 60px;
+    /* Espaço entre o título e os botões */
 }
 
 /* Estilo dos botões */
@@ -245,7 +267,8 @@ body {
     padding: 0;
     display: flex;
     justify-content: center;
-    gap: 15px; /* Espaçamento entre os botões */
+    gap: 15px;
+    /* Espaçamento entre os botões */
 }
 
 .section-about__start .menu-iniciar li {
@@ -254,7 +277,8 @@ body {
 
 .section-about__start .menu-iniciar a {
     text-decoration: none;
-    color: #FEFEFA; /* Ajuste conforme o tema */
+    color: #FEFEFA;
+    /* Ajuste conforme o tema */
     border: 2px solid #FEFEFA;
     border-radius: 25px;
     padding: 10px 20px;
@@ -264,9 +288,11 @@ body {
 
 /* Estilo da imagem */
 .section-about__start .img-example-start {
-    width: 85%; /* Ajuste conforme necessário */
+    width: 85%;
+    /* Ajuste conforme necessário */
     height: auto;
     border-radius: 20px;
-    margin-top: 40px; /* Espaço entre os botões e a imagem */
-  
+    margin-top: 40px;
+    /* Espaço entre os botões e a imagem */
+
 }
