@@ -23,21 +23,26 @@ session_start();
         <h1>Neneko <img src="img/gatinho.png" alt="logo"></h1>
         <nav>
             <ul>
-                <li><a href="logout.php">Logout</a></li>
+                <!-- Botão para abrir metas -->
+                <li>
+                    <a href=""><img src="img/meta-icon.png" alt="sair"></a>
+                </li>
+                <!-- Botão para abrir extrato -->
+                <li>
+                    <a href="extrato.php"><img src="img/extrato-icon.png" alt="sair"></a>
+                </li>
+                <!-- Botão para abrir a calculadora -->
+                <li>
+                    <div id="calculator-button" onclick="openCalculator()">
+                        <img src="img/calc.png" alt="Calculadora">
+                    </div>
+                </li>
+                <li>
+                    <a href="logout.php"><img src="img/logout.png" alt="sair"></a>
+                </li>
             </ul>
         </nav>
     </div>
-
-     <!-- Botão para abrir a calculadora -->
-    <button id="calculator-button" onclick="openCalculator()"><img src="img/calc.png" alt="Calculadora"></button>
-
-    <script>
-        function openCalculator() {
-            const popup = window.open('calculadora.php', 'Calculadora', 'width=350,height=600');
-            popup.focus();
-        }
-    </script>
-
 
     <div class="btn-group">
         <button type="button" id="addContaBtn" class="btn btn-outline-primary">Adicionar Conta Bancária</button>
@@ -245,11 +250,6 @@ session_start();
         }
         ?>
     </div>
-
-    <!-- Botão que leva pro extrato -->
-    <a href="extrato.php">
-        <button type="button" class="btn btn-outline-primary">Confira seu extrato aqui</button>
-    </a>
 
     <!-- Gráfico -->
     <div class="grafico">
@@ -561,6 +561,13 @@ session_start();
             if (event.target == addDespesaModal) {
                 addDespesaModal.style.display = 'none';
             }
+        }
+    </script>
+
+    <script>
+        function openCalculator() {
+            const popup = window.open('calculadora.php', 'Calculadora', 'width=350,height=600');
+            popup.focus();
         }
     </script>
 
