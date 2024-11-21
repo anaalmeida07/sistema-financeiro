@@ -28,6 +28,17 @@ session_start();
         </nav>
     </div>
 
+     <!-- Botão para abrir a calculadora -->
+    <button id="calculator-button" onclick="openCalculator()"><img src="img/calc.png" alt="Calculadora"></button>
+
+    <script>
+        function openCalculator() {
+            const popup = window.open('calculadora.php', 'Calculadora', 'width=350,height=600');
+            popup.focus();
+        }
+    </script>
+
+
     <div class="btn-group">
         <button type="button" id="addContaBtn" class="btn btn-outline-primary">Adicionar Conta Bancária</button>
         <button type="button" id="addReceitaBtn" class="btn btn-outline-primary">Adicionar Nova Receita</button>
