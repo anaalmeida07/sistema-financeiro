@@ -28,7 +28,7 @@
         <!-- Menu Direito -->
         <nav class="menu-direita">
             <ul>
-                <li><a href="cadastrar.php">Cadastrar</a></li>
+                <li><a href="cadastro-tela.php">Cadastrar</a></li>
                 <li><a href="login.php">Entrar</a></li>
             </ul>
         </nav>
