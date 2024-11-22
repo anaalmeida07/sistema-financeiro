@@ -1,72 +1,60 @@
 body {
-    display: flex; /* Usar Flexbox para organizar os elementos */
-    flex-direction: column; /* Mantém a barra no topo e o conteúdo abaixo */
-    background-color: #1714b3;
-    align-items: center; /* Centralizar horizontalmente */
-    min-height: 100vh; /* Garante altura total da tela */
-    margin: 0 0;
-    padding: 0;
+    display: flex; 
+    flex-direction: column; 
+    background: rgb(44,72,220);
+    background: radial-gradient(circle, rgba(44,72,220,1) 0%, rgba(23,20,179,1) 100%);
+    align-items: center; 
+    margin: 0;
+    padding: 0 ;
     font-family: 'Montserrat', sans-serif;
     width: 100%;
-
+    overflow: hidden; /* Impede que conteúdo exceda o viewport */
+    
 }
 
 .conteudo {
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente os itens */
-    align-items: center; /* Centraliza verticalmente os itens */
+    align-items: center; 
     gap: 100px;
-    padding: 0px 0px;
-    max-width: 1200px; 
-    height: auto; /* Ajusta dinamicamente à altura do conteúdo */
-    background-color: #1714b3;
-    margin: 0 0 0 20px; /* Centraliza horizontalmente */
-    width: 100%;
-   
+    padding: 0; 
+    height: auto; 
+    margin: 0; 
+  
+    
 }
 
-
-
-/* Formulário de login */
 .form {
     box-sizing: border-box;
-    padding: 40px 20px;
+    padding: 100px 30px;
     width: 100%;
-    max-width: 600px; /* Largura máxima do formulário */
+    max-width: 600px; 
     display: flex;
     flex-direction: column;
-    align-items: center; /* Alinha os itens à esquerda */
+    align-items: center; 
     text-align: left;
     flex: 1;
-margin-top: 10px;
-
+    margin: 0; /* Remove o espaço adicional */
     height: auto;
-
-    /* Sombra para o formulário */
-   
-
-
-}   
+}
 
 /* Estilo para o título principal */
 .title-card-login {
-    font-size: 105px; /* Tamanho do título */
-    color: #fefefa;
-    text-align: left; /* Alinha o texto à esquerda */
-    margin: 0; /* Remove margens padrão */
+    font-size: 100px; /* Tamanho do título */
+    color: #fefefa; /* Cor do texto */
+    text-align: center; /* Centraliza horizontalmente o texto */
+    margin: 0 0 20px; 
     text-shadow: 2px 15px 30px rgba(80, 73, 73, 0.35); /* Sombra para o texto */
-
-
 }
+
 
 /* Estilo para o subtítulo */
 .subtitle-card-login {
     font-size: 20px; /* Tamanho do subtítulo */
     color: #fefefa;     
     text-align: left; /* Alinha o texto à esquerda */
-    margin: 0 0; /* Remove margens padrão */
-    margin-bottom: 50px;
     text-shadow: 2px 15px 30px rgba(0, 0, 0, 0.5); /* Sombra para o texto */
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 /* Campos de entrada */
@@ -105,27 +93,37 @@ margin-top: 10px;
 
 /* Botão de envio */
 .submit {
-    background-color: #1714b3;
-    border: 2px solid white;
+    background-color: #fefefa;
+    border: 0.5px solid;
     border-radius: 10px;
-    color: white;
+    color: rgb(44,72,220);
+    color: radial-gradient(circle, rgba(44,72,220,1) 0%, rgba(23,20,179,1) 100%);
     font-size: 18px;
-    padding: 10px 0;
-    width: 40%;
+    padding: 15px 0;
+    width: 20%;
     cursor: pointer;
     text-align: center;
     margin-top: 20px;
-    font-style: bold;
+    font-style: normal;
     box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3); /* Cor preta com opacidade */
 }
 
 /* Links adicionais */
-.form a {
+.link-container a{
     color: #fefefa;
     font-size: 14px;
     text-decoration: none;
     margin-top: 20px;
     display: inline-block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    line-height: 0.5;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 35px;
+
+
 }
 
 .form a:hover {
@@ -138,7 +136,7 @@ margin-top: 10px;
     justify-content: space-between;
     align-items: center;
    background-color: #fefefa;
-    padding: 5px 30px;
+    padding: 0 30px;
     width: 100%;
 }
 .barra ul a, .barra ul{
@@ -146,13 +144,14 @@ margin-top: 10px;
     color: #38b6ff;
     list-style: none;
     font-size: 16px;
-    margin-right: 30px;
+    margin-right: 15px;
     font-style: bold;
 }
 
 .img-barra {
-    width: 5%;
-    margin-left: 30px;
+    width: 50px;
+    margin-left: 15px;
+    height: 48px;
 }
 
 

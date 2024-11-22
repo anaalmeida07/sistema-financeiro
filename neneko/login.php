@@ -25,7 +25,7 @@
     <div class="conteudo">
         <form method="post" action="logar.php" class="form login">
             <div class="title-login">
-                <h1 class="title-card-login">NENEKO</h1>
+                <h1 class="title-card-login">ZenPay</h1>
                 <h2 class="subtitle-card-login">Faça o login para ter acesso a sua conta!</h2>
             </div>
 
@@ -50,7 +50,7 @@
 
             <!-- Link para criar uma nova conta -->
             <div class="link-container">
-                <a href="criar_conta.php" class="create-account-link">Não tem conta ainda? Crie a sua agora!</a>
+                <a href="cadastro-tela.php" class="create-account-link">Não tem conta ainda? Crie a sua agora!</a>
             </div>
         </form>
     </div>

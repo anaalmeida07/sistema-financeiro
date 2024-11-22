@@ -37,7 +37,7 @@
     <!-- Página 1: Início -->
     <div id="section-home" class="section section--home">
         <div class="content-home">
-            <h1 class="title-main">NENEKO</h1>
+            <h1 class="title-main">ZenPay</h1>
             <h2 class="subtitle-main">Gestão financeira sem complicação, seu dinheiro no controle com praticidade.</h2>
             <div class="img-container">
                 <img src="img/exemplo.png" alt="exemplo" class="img-example">
@@ -52,14 +52,14 @@
 
         <div id="section-about-intro" class="section-about__intro">
             <h1 class="intro-title"><strong>Não sabe como gerenciar seu dinheiro?</strong></h1>
-            <h2 class="intro-text">O <strong>NENEKO</strong> é o sistema perfeito para você que chega ao final <br> do mês sem saber onde foi parar o seu dinheiro.</h2>
+            <h2 class="intro-text">O <strong>ZenPay</strong> é o sistema perfeito para você que chega ao final <br> do mês sem saber onde foi parar o seu dinheiro.</h2>
         </div>
 
         <div id="section-about-cards" class="section-about__cards">
         <img src="img/exemplo.png" alt="exemplo" class="img-example-cards">  
         <div class="text-container-cards">
         <h1 class="cards-title"><strong>Gerencie seus<br> cartões de forma <br> simples</strong></h1>
-        <h2 class="cards-text">Com o NENEKO, você tem<br> o controle total sobre seus <br> cartões em um só lugar.</h2>
+        <h2 class="cards-text">Com o ZenPay, você tem<br> o controle total sobre seus <br> cartões em um só lugar.</h2>
     </div>
         </div>
 

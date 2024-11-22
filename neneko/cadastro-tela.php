@@ -24,7 +24,7 @@
 
     <div class="conteudo">
     <div class="title-login">
-                <h1 class="title-card-login"><strong>NENEKO</strong></h1>
+                <h1 class="title-card-login"><strong>ZenPay</strong></h1>
                 <h1 class="subtitle-card-login">Cadastre-se e tenha <br>controle total do seu dinheiro</h1>
             </div>
         <form method="post" action="logar.php" class="form login">
@@ -55,13 +55,13 @@
             </div>
 
             <!-- Botão de entrar -->
-            <button type="submit" class="submit"><strong>Cadastrar</strong></button>
+            <button type="submit" class="submit">Cadastrar</button>
 
          
 
             <!-- Link para criar uma nova conta -->
             <div class="link-container">
-                <a href="login.php" class="create-account-link">Já possui uma conta? <strong >Clique aqui para entrar</strong></a>
+                <a href="login.php" class="create-account-link">Já possui uma conta?<strong > Clique aqui para entrar</strong></a>
             </div>
         </form>
     </div>
