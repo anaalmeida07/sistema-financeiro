@@ -1,7 +1,7 @@
 /* Estilos gerais */
 body {
-    background: rgb(44,72,220);
-    background: radial-gradient(circle, rgba(44,72,220,1) 0%, rgba(23,20,179,1) 100%);
+    background: rgb(44, 72, 220);
+    background: radial-gradient(circle, rgba(44, 72, 220, 1) 0%, rgba(23, 20, 179, 1) 100%);
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -20,27 +20,29 @@ body {
     place-items: center;
 }
 
-    .menu-central ul {
-        display: flex;
-        list-style: none;
-        margin: 0px 0px 0px 115px;
-        align-items: center;
-        justify-content: right;
-        text-align: center;
-        gap: 15px;
+.menu-central ul {
+    display: flex;
+    list-style: none;
+    margin: 0 0 0 115px;
+    align-items: center;
+    justify-content: right;
+    text-align: center;
+    gap: 15px;
 }
-.menu-central li, .menu-direita li  {
+
+.menu-central li,
+.menu-direita li {
     font-size: 18px;
     border-radius: 25px;
     padding: 10px 20px;
     text-align: center;
     justify-content: center;
     align-items: center;
-    background-color:  rgba(23,20,179,1);
+    background-color: rgba(23, 20, 179, 1);
 }
 
 .logotipo {
-    width: 82px;
+    width: 80px;
     height: 70px;
 }
 
@@ -49,27 +51,23 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    align-items: center;
 }
-
 
 .menu-direita ul {
     display: flex;
     list-style: none;
     padding: 0;
-    margin: 0 0;
+    margin: 0;
     align-items: center;
     justify-content: center;
     text-align: center;
     gap: 15px;
 }
 
-
-
 .menu-central li a,
 .menu-direita li a {
     text-decoration: none;
-    color: #FEFEFA; 
+    color: #FEFEFA;
 }
 
 /* Página 1: Conteúdo principal */
@@ -81,14 +79,20 @@ body {
     place-items: center;
 }
 
-.content-home, .section--about,.section-about__cards, .section-about__expenses, .section-about__start {
+.content-home,
+.section--about,
+.section-about__cards,
+.section-about__expenses,
+.section-about__start {
     display: grid;
     justify-content: center;
     align-items: center;
     text-align: center;
     place-items: center;
     color: #FEFEFA;
+    
 }
+
 .title-main {
     color: #FEFEFA;
     text-align: center;
@@ -96,250 +100,185 @@ body {
     font-weight: bold;
     margin-top: 20px;
     letter-spacing: -9px;
-    
-
 }
 
 .subtitle-main {
     color: #FEFEFA;
     text-align: center;
-    font-size: 30px;
-    margin-top: 20px;
+    font-size: 25px;
     margin: 30px 15px 20px 15px;
-    
-
-}
-.img-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0px; /* Reduzido o espaçamento superior */
-    background-color: #fefefa;
-    border-radius: 100px; /* Arredondamento ajustado */
-    height: 130px; /* Altura reduzida */
-    width: 70%; /* Largura reduzida */
-    padding: 0px 70px 0px 0px; /* Menor padding */
-    gap: 30px; /* Menor espaçamento entre elementos */
-    text-align: center;
 }
 
-.img-example {
-    max-width: 40%; /* Reduzido ainda mais a largura máxima */
-    height: auto; /* Mantém proporção automática */
-    margin: auto;
-    margin-top: -20px; /* Ajustado para alinhar melhor */
-    width: 200px; /* Largura reduzida */
-    border-radius: 20px; /* Arredondamento proporcional */
-    margin-bottom: 0;
-}
+/*#dcdc05*/
 
-.text-example {
-    bottom: 90px; /* Ajustado para combinar com o novo tamanho */
-    text-align: left;
-    font-size: 25px; /* Reduzido o tamanho da fonte */
-    color: #1714B3;
-    white-space: nowrap;
-    margin: 0;
-    margin-top: 0;
-}
-
-
-
-/*
-/* Imagem com contorno 
 .img-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 100px;
-    background-color: #fefefa;
-    border-radius: 200px;    
-    height: 268px;
-    width: 90%;
-    padding: 0px 90px 0px 0px;
+    background-color: #eaea0a;
+    border-radius: 100px;
+    height: 130px;
+    width: 75%;
+    padding: 0 70px 0 0;
     gap: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
+    
 }
 
 .img-example {
-    bottom: 155px;
-    text-align: left;
-    font-size: 45px;
-    color: #1714B3;
-    white-space: nowrap;
-    margin: 0;
-    margin-top: 0;
+    max-width: 40%;
+    height: auto;
+    margin: auto;
+    margin-top: -20px;
+    width: 200px;
+    border-radius: 20px;
+    margin-bottom: 0;
 }
 
 .text-example {
-    bottom: 155px;
+    bottom: 90px;
     text-align: left;
-    font-size: 45px;
+    font-size: 25px;
     color: #1714B3;
     white-space: nowrap;
     margin: 0;
-    margin-top: 0;
-}*/
-
-
+}
 
 /* Seção Introdução */
 .section-about__intro {
     padding: 10px;
     display: flex;
     justify-content: center;
-    /* Centraliza horizontalmente */
-    
-    /* Centraliza verticalmente */
     text-align: center;
     height: 100vh;
     flex-direction: column;
-    
-
 }
 
-.img-money{
-    display:flex;
-    justify-content: right;
-    text-align: right;
-}
 
-.img-money-intro {
+
+.moeda-intro {
     width: 30%;
-    height: auto; 
+    height: auto;
     align-self: right;
     justify-content: center;
+       
+   
+
 }
 
 .section-about__intro .intro-title {
-    font-size: 60px;
+    font-size: 50px;
     font-weight: bold;
-}
-
-.section-about__intro .intro-text {
-    font-size: 40px;
-    line-height: 1.5;
-    text-align: center;
-    margin-top: 20px;
-
-
-}
-
-/* Seção Cartões */
-.section-about__cards, .section-about__expenses {
-    display: flex;
-    justify-content: center;
-    padding: 100px 100px 100px;
-    height: 100vh;
-}
-
-/* Estilo da imagem */
-.section-about__cards .img-example-cards {
-    width: 40%;
-    /* Ajusta a largura da imagem */
-    height: auto;
-    border-radius: 40px;
     
 }
 
-/* Contêiner de texto */
+.section-about__intro .intro-text {
+    font-size: 30px;
+    line-height: 1.5;
+    text-align: center;
+    margin-top: 20px;
+    color:#eaea0a;
+}
+
+/* Seção Cartões */
+.section-about__cards,
+.section-about__expenses{
+    display: flex;
+    padding: 70px;
+    height: 100vh;
+
+    
+}
+
+
+.section-about__cards{
+    background: linear-gradient(135deg, #1714B3 42%, #eaea0a 42%);
+
+
+
+}
 .section-about__cards .text-container-cards {
     width: 50%;
-    /* Ajusta a largura do texto */
     text-align: right;
-    /* Alinha o texto à direita */
-    margin-left: 20px;
-    /* Espaçamento entre a imagem e o texto */
-    margin-right: 15px;
+    margin-left: 15px;
+    margin-right: 25px;
+    color: #1714B3;
+    
 }
 
 .section-about__cards .cards-title {
-    font-size: 65px;
+    font-size: 40px;
     font-weight: bold;
-    margin: 0;
+    
 }
 
 .section-about__cards .cards-text {
     margin-top: 1px;
-    font-size: 30px;
-    margin-top: 20px;
-
+    font-size: 23px;
+    margin-top: 20px;   
 }
 
-/* Seção de gastos */
-
-/* Estilo da imagem */
-.section-about__expenses .img-example-expenses {
+.section-about__expenses .img-example-expenses,
+.section-about__cards .img-example-cards {
     width: 40%;
-    /* Ajusta a largura da imagem */
     height: auto;
     border-radius: 40px;
+    gap: 10px;
 }
 
-/* Contêiner de texto */
 .section-about__expenses .text-container-expenses {
     width: 50%;
-    /* Ajusta a largura do texto */
     text-align: left;
-    /* Alinha o texto à direita */
-    margin-left: 15 px;
-    /* Espaçamento entre a imagem e o texto */
+    margin-left: 15px;
     margin-right: 25px;
 }
 
 .section-about__expenses .expenses-title {
-    font-size: 60px;
+    font-size: 40px;
     font-weight: bold;
 }
 
 .section-about__expenses .expenses-text {
-    margin-top: 1px;
-    font-size: 30px;
+    font-size: 23px;
     margin-top: 20px;
 }
 
-
-
-/* Seção de start */
-/* Seção de início */
-.section-about__start {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    /* Coloca elementos em coluna */
-    align-items: center;
-    /* Centraliza os elementos */
-    text-align: center;
-    /* Centraliza o texto */
+/* Seção de start
+*/
+.section-about__start{
+    
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        place-items: center;
+        color: #FEFEFA;
+        position: relative; /* Necessário para o posicionamento da imagem */
+        height: 100vh; /* Altura da seção para melhor visualização */
+    
 }
 
-/* Contêiner de texto */
 .section-about__start .text-container-start {
     width: 100%;
-    /* Pode ajustar conforme necessário */
+    margin: 0px;
+   
+   
 }
 
-/* Estilo do título */
 .section-about__start .start-title {
     white-space: nowrap;
-    /* Impede quebra de linha */
-    font-size: 60px;
-    /* Ajuste conforme necessário */
+    font-size: 50px;
     margin-bottom: 60px;
-    /* Espaço entre o título e os botões */
 }
 
-/* Estilo dos botões */
 .section-about__start .menu-iniciar ul {
     list-style: none;
     padding: 0;
     display: flex;
     justify-content: center;
     gap: 15px;
-    /* Espaçamento entre os botões */
+
 }
 
 .section-about__start .menu-iniciar li {
@@ -348,22 +287,70 @@ body {
 
 .section-about__start .menu-iniciar a {
     text-decoration: none;
-    color: #FEFEFA;
-    /* Ajuste conforme o tema */
-    border: 2px solid #FEFEFA;
+    color: #1714B3;
+    background-color: #eaea0a;
     border-radius: 25px;
     padding: 10px 20px;
     transition: background-color 0.3s;
+  
+    
 }
 
-
-/* Estilo da imagem */
 .section-about__start .img-example-start {
-    width: 85%;
-    /* Ajuste conforme necessário */
-    height: auto;
-    border-radius: 20px;
-    margin-top: 40px;
-    /* Espaço entre os botões e a imagem */
 
+        position: absolute; /* Faz a imagem ser posicionada relativa à seção */
+        margin-bottom: 0; /* Posiciona no final da seção */
+        left: 50%; /* Centraliza horizontalmente */
+        transform: translateX(-50%); /* Ajusta o alinhamento para centralização */
+        width: 30%; /* Define o tamanho da imagem */
+        height: auto; /* Mantém a proporção da imagem */
+        z-index: 1; /* Certifica-se de que a imagem esteja visível acima do fundo */
+    }
+    
+/* Rodapé principal */
+.site-footer {
+    background-color: #fefefa; /* Cor de fundo */
+    color: #1714B3; /* Cor do texto */
+    text-align: center; /* Centraliza o texto */
+    /* Espaçamento interno */
+    position: relative; /* Ajuste o posicionamento */
+    width: 100%; /* Preenche a largura total */
+    margin-top: auto; /* Empurra o rodapé para o final do conteúdo */
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra */
 }
+
+/* Centraliza o conteúdo interno */
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centraliza verticalmente */
+    gap: 10px; /* Espaçamento entre os itens */
+    line-height: 1.9;
+}
+
+/* Navegação no rodapé */
+.footer-nav ul {
+    list-style: none; /* Remove os marcadores */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px; /* Espaçamento entre os itens */
+}
+
+.footer-nav li {
+    display: inline;
+}
+
+.footer-nav a {
+    text-decoration: none;
+    color: #1714B3;
+    font-size: 14px;
+    transition: color 0.3s ease;
+    
+}
+
+.footer-nav a:hover {
+    color: #dcdc05; /* Cor do hover */
+}
+

@@ -39,12 +39,14 @@
         <div class="content-home">
             <h1 class="title-main">ZenPay</h1>
             <h2 class="subtitle-main">Gestão financeira sem complicação, seu dinheiro no controle com praticidade</h2>
-        </div>
-        <div class="img-container">
+           
+            <div class="img-container">
                 <img src="img/gatinho.png" alt="exemplo" class="img-example">
                 <h2 class="text-example"><strong>Praticidade</strong> com seu dinheiro,<br>
                     em qualquer <strong>lugar</strong> e a qualquer <strong>momento</strong></h2>
             </div>
+        </div>
+        
     </div>
 
     <!-- Página 2: Sobre -->
@@ -53,19 +55,20 @@
         <div id="section-about-intro" class="section-about__intro">
             <h1 class="intro-title"><strong>Não sabe como gerenciar seu dinheiro?</strong></h1>
             <h2 class="intro-text">O <strong>ZenPay</strong> é o sistema perfeito para você que chega ao final <br> do mês sem saber onde foi parar o seu dinheiro.</h2>
-            <img src="img/real-brasileiro.png" alt="money" class="img-money-intro">
-        </div>
-
-        <div id="section-about-cards" class="section-about__cards">
-            <div class="img_money">
-            <img src="img/exemplo.png" alt="exemplo" class="img-example-cards">  
+              
+            <div class="img-moeda"> <img src="img/porquinho.png" alt="moeda" class="moeda-intro">
             </div>
-        
-        <div class="text-container-cards">
-        <h1 class="cards-title"><strong>Gerencie seus<br> cartões de forma simples</strong></h1>
-        <h2 class="cards-text">Com o ZenPay, você tem<br> o controle total sobre seus <br> cartões em um só lugar.</h2>
-    </div>
         </div>
+        </div>
+        <div id="section-about-cards" class="section-about__cards">
+        <img src="img/no1.png" alt="exemplo" class="img-example-cards">
+        <div class="text-container-cards">
+        
+            <h1 class="cards-title"><strong>Gerencie seus<br> cartões de forma simples</strong></h1>
+            <h2 class="cards-text">Com o ZenPay, você tem<br> o controle total sobre seus <br> cartões em um só lugar.</h2>
+        </div>
+      
+    </div>
 
         <div id="section-about-expenses" class="section-about__expenses">
         
@@ -74,23 +77,38 @@
         <h2 class="expenses-text">Acompanhe seus gastos, <br>organize suas faturas e evite <br>surpresas no final do mês.</h2>
           
     </div>
-    <img src="img/exemplo.png" alt="exemplo" class="img-example-expenses">
+    <img src="img/din2.png" alt="exemplo" class="img-example-expenses">
         </div>
 
         <div id="section-about-start" class="section-about__start">
-    <div class="text-container-start">
+         <div class="text-container-start">
         <h1 class="start-title"><strong>Não perca tempo, comece já!</strong></h1>
-        
         <div class="menu-iniciar">
             <ul>
                 <li><a href="login.php">Entrar</a></li>
                 <li><a href="login.php">Cadastrar</a></li>
             </ul>
+            
         </div>
 
-        <img src="img/exemplo.png" alt="exemplo" class="img-example-start">
-    </div>
+        
+        <img src="img/din1.png" alt="exemplo" class="img-example-start">
+    
 </div>
+<!--
+<footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2024 ZenPay. Todos os direitos reservados.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                    <li><a href="#terms">Termos de Uso</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>-->
+    
 </body>
 
 </html>
