@@ -20,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if(password_verify($senha, $row['senha'])) {
             // Autenticação bem-sucedida, define a variável de sessão para identificar o usuário logado
             $_SESSION['usuario_id'] = $row['id_usuario']; // Use 'id_usuario' como o identificador do usuário
-
+            $_SESSION['nome_usuario'] = $row['nome'];
             // Redireciona para a página principal
             header('Location: home.php');
             exit;

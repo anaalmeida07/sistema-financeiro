@@ -16,7 +16,7 @@ body {
     justify-content: space-between;
     /* Adiciona espaçamento entre os itens */
     align-items: center;
-    padding: 10px 20px;
+    padding: 5px 10px;
     width: 100%;
     position: relative;
     /* Remover 'fixed' para tornar o menu não fixo */
@@ -43,28 +43,33 @@ body {
 
 /* Centralizar apenas as opções do menu */
 .barra nav ul {
+    display: flex;
     list-style-type: none;
     margin: 0;
-    padding: 0;
-    display: flex;
+    padding: 0 0;
     justify-content: center;
+    align-items: center;
+    text-align: center;
+  
+    
     /* Centralizar as opções de menu */
 }
 
+.barra nav a{
+    margin: 0;
+    padding: 0;
+}
+.icons-home img{
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    height: auto;
+}
 .barra nav ul li {
-    margin-right: 30px;
+    margin-right: 2 px;
+   
 }
 
-.barra nav ul li:first-child {
-    margin-right: 15px;
-    /* Distância menor entre as opções */
-}
-
-.barra nav ul li a {
-    text-decoration: none;
-    color: #FEFEFA;
-    font-family: "Montserrat", sans-serif;
-}
 
 @media screen and (max-width: 700px) {
 

@@ -1,6 +1,13 @@
+
 <?php
-// Iniciar a sessão no início do arquivo
 session_start();
+
+if (!isset($_SESSION['nome_usuario'])) {
+    header("Location: login.php"); // Redirecionar se o usuário não estiver logado
+    exit();
+}
+
+$nomeUsuario = $_SESSION['nome_usuario'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -11,7 +18,7 @@ session_start();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <title>Bem-vindo!</title>
+    <title>Bem-vindo!!</title>
     <link rel="icon" href="img/gatinho.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/home.css">
@@ -19,30 +26,35 @@ session_start();
 </head>
 
 <body>
-    <div class="barra">
-        <h1>Neneko <img src="img/gatinho.png" alt="logo"></h1>
-        <nav>
-            <ul>
-                <!-- Botão para abrir metas -->
-                <li>
-                    <a href=""><img src="img/meta-icon.png" alt="sair"></a>
-                </li>
-                <!-- Botão para abrir extrato -->
-                <li>
-                    <a href="extrato.php"><img src="img/extrato-icon.png" alt="sair"></a>
-                </li>
-                <!-- Botão para abrir a calculadora -->
-                <li>
-                    <div id="calculator-button" onclick="openCalculator()">
-                        <img src="img/calc.png" alt="Calculadora">
-                    </div>
-                </li>
-                <li>
-                    <a href="logout.php"><img src="img/logout.png" alt="sair"></a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+        <div class="barra">
+            <h1> <img src="img/gatinho.png" alt="logo"></h1>
+            <nav>
+                <div class="icons-home">
+                <ul>
+                    <!-- Botão para abrir metas -->
+                    <li>
+                        <a href="meta.php"><img src="img/meta-icon.png" alt="sair"></a>
+                    </li>
+                    <!-- Botão para abrir extrato -->
+                    <li>
+                        <a href="extrato.php"><img src="img/extrato-icon.png" alt="sair"></a>
+                    </li>
+                    <!-- Botão para abrir a calculadora -->
+                    <li>
+                        <div id="calculator-button" onclick="openCalculator()">
+                            <img src="img/calc.png" alt="Calculadora">
+                        </div>
+                    </li>
+                    <li>
+                        <a href="logout.php"><img src="img/logout.png" alt="sair"></a>
+                    </li>
+                </ul>
+                </div>
+            
+            </nav>
+        </div>
+
+    <h1>Bem vindo, <?php echo htmlspecialchars($nomeUsuario); ?>!</h1>
 
     <div class="btn-group">
         <button type="button" id="addContaBtn" class="btn btn-outline-primary">Adicionar Conta Bancária</button>

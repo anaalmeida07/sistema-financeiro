@@ -41,7 +41,6 @@
             <h2 class="subtitle-main">Gestão financeira sem complicação, seu dinheiro no controle com praticidade</h2>
            
             <div class="img-container">
-                <img src="img/gatinho.png" alt="exemplo" class="img-example">
                 <h2 class="text-example"><strong>Praticidade</strong> com seu dinheiro,<br>
                     em qualquer <strong>lugar</strong> e a qualquer <strong>momento</strong></h2>
             </div>
@@ -86,7 +85,7 @@
         <div class="menu-iniciar">
             <ul>
                 <li><a href="login.php">Entrar</a></li>
-                <li><a href="login.php">Cadastrar</a></li>
+                <li><a href="cadastro-tela.php">Cadastrar</a></li>
             </ul>
             
         </div>

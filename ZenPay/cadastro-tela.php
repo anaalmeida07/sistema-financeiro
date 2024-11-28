@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,43 +28,33 @@
                 <h1 class="title-card-login"><strong>ZenPay</strong></h1>
                 <h1 class="subtitle-card-login">Cadastre-se e tenha <br>controle total do seu dinheiro</h1>
             </div>
-        <form method="post" action="logar.php" class="form login">
-           
+            <form method="POST" action="cadastro.php" class="form login">
+    <div class="input-container ic1">
+        <label for="user-name" class="placeholder">Nome</label><br>
+        <input id="user-name" class="input" type="text" name="nome" placeholder=" " />
+    </div>
 
-            
-            <div class="input-container ic1">
-            <label for="user-name" class="placeholder">Nome</label>    <br>  
-            <input id="user-name" class="input" type="text" name="user-name" placeholder=" " />
-                
-            </div>
+    <div class="input-container ic2">
+        <label for="login-email" class="placeholder">E-mail</label><br>
+        <input id="login-email" class="input" type="email" name="email" placeholder="" />
+    </div>
 
-            <div class="input-container ic2">
-                <label for="login-email" class="placeholder">E-mail</label><br> 
-                <input id="login-email" class="input" type="email" name="email" placeholder="" />
-                
-            </div>
-            <div class="input-container ic3">
-            <label for="login-password" class="placeholder">Senha</label> <br>      
-            <input id="login-password" class="input" type="password" name="senha" placeholder=" " />
-                
-            </div>
 
-            <div class="input-container ic4">
-            <label for="confirm-login-password" class="placeholder">Confirmação de senha</label>      
-            <input id="confirm-login-password" class="input" type="password" name="confirm-senha" placeholder=" " />
-                
-            </div>
 
-            <!-- Botão de entrar -->
-            <button type="submit" class="submit">Cadastrar</button>
+    <div class="input-container ic3">
+        <label for="login-password" class="placeholder">Senha</label><br>
+        <input id="login-password" class="input" type="password" name="senha" placeholder=" " />
+    </div>
 
-         
+    <div class="input-container ic4">
+        <label for="confirm-login-password" class="placeholder">Confirmação de senha</label><br>
+        <input id="confirm-login-password" class="input" type="password" name="confirmacaoSenha" placeholder=" " />
+    </div>
 
-            <!-- Link para criar uma nova conta -->
-            <div class="link-container">
-                <a href="login.php" class="create-account-link">Já possui uma conta?<strong > Clique aqui para entrar</strong></a>
-            </div>
-        </form>
+
+    <button type="submit" class="submit">Cadastrar</button>
+</form>
+
     </div>
 
     <script>
