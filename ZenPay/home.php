@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -33,7 +32,7 @@ $nomeUsuario = $_SESSION['nome_usuario'];
                 <ul>
                     <!-- Botão para abrir metas -->
                     <li>
-                        <a href="meta.php"><img src="img/meta-icon.png" alt="sair"></a>
+                        <a href="meta.php"><img src="img/meta-icon.png"></a>
                     </li>
                     <!-- Botão para abrir extrato -->
                     <li>

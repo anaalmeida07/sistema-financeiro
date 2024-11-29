@@ -1,7 +1,3 @@
-<?php
-// Iniciar a sessão no início do arquivo
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
