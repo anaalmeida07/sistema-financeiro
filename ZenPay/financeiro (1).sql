@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27/11/2024 às 23:44
+-- Tempo de geração: 29/11/2024 às 16:01
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `contas_bancarias` (
-  `id` int(11) NOT NULL,
+  `conta_bancaria_id` int(11) NOT NULL,
   `usuario_id` int(11) DEFAULT NULL,
   `nome` varchar(40) DEFAULT NULL,
   `tipo_conta` varchar(40) DEFAULT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE `contas_bancarias` (
 -- Despejando dados para a tabela `contas_bancarias`
 --
 
-INSERT INTO `contas_bancarias` (`id`, `usuario_id`, `nome`, `tipo_conta`, `saldo`) VALUES
+INSERT INTO `contas_bancarias` (`conta_bancaria_id`, `usuario_id`, `nome`, `tipo_conta`, `saldo`) VALUES
 (2, 51, 'Itaú', 'Corrente', 810.36),
 (3, 51, 'Bradesco', 'Corrente', 170.00),
 (4, 51, 'Nubank', 'Corrente', 30.00),
@@ -131,6 +131,26 @@ INSERT INTO `despesas_usuario` (`id`, `usuario_id`, `valor`, `conta_id`, `catego
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `metas`
+--
+
+CREATE TABLE `metas` (
+  `usuario_id` int(11) NOT NULL,
+  `meta_gastos` decimal(10,2) DEFAULT NULL,
+  `meta_poupanca` decimal(10,2) DEFAULT NULL,
+  `conta_bancaria_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `metas`
+--
+
+INSERT INTO `metas` (`usuario_id`, `meta_gastos`, `meta_poupanca`, `conta_bancaria_id`) VALUES
+(65, 2000.00, 1000.00, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `receitas_usuario`
 --
 
@@ -200,12 +220,8 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id_usuario`, `nome`, `email`, `senha`) VALUES
 (1, 'almeida', 'almeida@almeida', '$2y$10$5SQg7bEZTsW.sle..RajY.EnCR4xOEkpRN1aPu.b/g4X0LAQl3x/m'),
-(41, 'ana', 'ana@ana.com', '$2y$10$RLRbcIlqTHaULlS8xVtQpecGTsmAjfw6vISKL/O0yY4hJSuhQy6WO'),
 (42, '', '', '$2y$10$V9O44f9x.jDHf.FVOJpxg.0EUV2MSQkBs6O3UrFKZtRzmRE/J25xS'),
-(43, 'ana', 'ana@ana.com', '$2y$10$mEpLLNw1kEMQ1m/WzpOsKu81QK6xmRsGjHbI56JHG1j4e/OqHBD4a'),
-(44, 'ana', 'ana@ana.com', '$2y$10$.vnPU/W9PF1zoK49VuR3ruY5rosTn/bTJg9Hm1pus6qvAUA.hGQ9i'),
 (45, 'carla', 'carla@carla.com', '$2y$10$W2m/a759Q5hC4AulfbsIfe.vNM4As0govfWUq.CEvRbBVT8EQq.L2'),
-(46, 'ana', 'ana@ana.com', '$2y$10$4AIQ5TSUFwGDw.MnJHn0K.dvgiihqr1/Zk8os5PJkfVK8v2XmYMum'),
 (47, 'luiz', 'luiz@luiz.com', '$2y$10$uJ6W3AT8GERsc0RNdt5dGu4Y/bCqOuhgNME5avhiXc4awomzvJnQy'),
 (48, 'bea', 'bea@bea.com', '$2y$10$3xhd.oqstc0RHLCcCzQD/.8XZX.pYDcoHt1KpPSivfPgq1mwpkgX6'),
 (49, 'beabe', 'beea@bea.com', '$2y$10$0tW3Dc51YCpgeyk1iPvy8eNpU9YA71fNaQflMSVMIgQR348ap0Pem'),
@@ -217,7 +233,8 @@ INSERT INTO `usuarios` (`id_usuario`, `nome`, `email`, `senha`) VALUES
 (55, 'kebolas', 'kebolas@gmail.com', '$2y$10$1JhJayUsk/7.FxEtHD6FGOD3VhjQRGh7nZdKtqqNa9A6ewAza1Vf2'),
 (56, 'salgado', 'salgado@gmail.com', '$2y$10$QNnQ5c2Hq98.KCKDpg9SI.pdsevY1PvALVdNXpeY0Dr4lEQqPPwYW'),
 (57, 'Luiz', 'luizhenriquejow@gmail.com', '$2y$10$34wsoUNHwqphHfscyApSy.Deab0bbiuTiQAsNs30Fwc.ROF7GAYEW'),
-(58, 'Sisi', 'simone@sisi.com', '$2y$10$7YQLDD0KSHoZHJlYuC39KeOTyxDbn3rjOwRTkPQ9TezG2.IMjsmpy');
+(58, 'Sisi', 'simone@sisi.com', '$2y$10$7YQLDD0KSHoZHJlYuC39KeOTyxDbn3rjOwRTkPQ9TezG2.IMjsmpy'),
+(65, 'ana carla garcia de almeida', 'ana@ana.com', '$2y$10$EoQsAKRQSK1vNe1ykDdkf.i4HWLZfU2lokvprgNUb/qmdderOmmYO');
 
 --
 -- Índices para tabelas despejadas
@@ -227,7 +244,7 @@ INSERT INTO `usuarios` (`id_usuario`, `nome`, `email`, `senha`) VALUES
 -- Índices de tabela `contas_bancarias`
 --
 ALTER TABLE `contas_bancarias`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`conta_bancaria_id`);
 
 --
 -- Índices de tabela `despesas_usuario`
@@ -236,6 +253,13 @@ ALTER TABLE `despesas_usuario`
   ADD PRIMARY KEY (`id`),
   ADD KEY `usuario_id` (`usuario_id`),
   ADD KEY `conta_id` (`conta_id`);
+
+--
+-- Índices de tabela `metas`
+--
+ALTER TABLE `metas`
+  ADD PRIMARY KEY (`usuario_id`),
+  ADD KEY `fk_conta_bancaria_id` (`conta_bancaria_id`);
 
 --
 -- Índices de tabela `receitas_usuario`
@@ -259,7 +283,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `contas_bancarias`
 --
 ALTER TABLE `contas_bancarias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `conta_bancaria_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de tabela `despesas_usuario`
@@ -277,7 +301,7 @@ ALTER TABLE `receitas_usuario`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- Restrições para tabelas despejadas
@@ -288,14 +312,20 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `despesas_usuario`
   ADD CONSTRAINT `despesas_usuario_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id_usuario`),
-  ADD CONSTRAINT `despesas_usuario_ibfk_2` FOREIGN KEY (`conta_id`) REFERENCES `contas_bancarias` (`id`);
+  ADD CONSTRAINT `despesas_usuario_ibfk_2` FOREIGN KEY (`conta_id`) REFERENCES `contas_bancarias` (`conta_bancaria_id`);
+
+--
+-- Restrições para tabelas `metas`
+--
+ALTER TABLE `metas`
+  ADD CONSTRAINT `fk_conta_bancaria_id` FOREIGN KEY (`conta_bancaria_id`) REFERENCES `contas_bancarias` (`conta_bancaria_id`) ON DELETE CASCADE;
 
 --
 -- Restrições para tabelas `receitas_usuario`
 --
 ALTER TABLE `receitas_usuario`
   ADD CONSTRAINT `receitas_usuario_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id_usuario`),
-  ADD CONSTRAINT `receitas_usuario_ibfk_2` FOREIGN KEY (`conta_destino_id`) REFERENCES `contas_bancarias` (`id`);
+  ADD CONSTRAINT `receitas_usuario_ibfk_2` FOREIGN KEY (`conta_destino_id`) REFERENCES `contas_bancarias` (`conta_bancaria_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

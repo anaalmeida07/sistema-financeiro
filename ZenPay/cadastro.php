@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $senha = $_POST['senha'];
     $confirmacaoSenha = $_POST['confirmacaoSenha'];
-    $sexo = $_POST['sexo'];
+    
 
     // Validar se todos os campos foram preenchidos
     if (empty($nome) || empty($email) || empty($senha) || empty($confirmacaoSenha)) {
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare($sql);
 
     if ($stmt) {
-        $stmt->bind_param("ssss", $nome, $email, $hashed_password);
+        $stmt->bind_param("sss", $nome, $email, $hashed_password);
 
         if ($stmt->execute()) {
             $_SESSION['nome_usuario'] = $nome; // Armazena o nome na sessão

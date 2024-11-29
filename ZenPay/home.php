@@ -1,5 +1,6 @@
+
 <?php
-session_start();
+require_once 'conexao.php';
 
 if (!isset($_SESSION['nome_usuario'])) {
     header("Location: login.php"); // Redirecionar se o usuário não estiver logado
@@ -26,40 +27,114 @@ $nomeUsuario = $_SESSION['nome_usuario'];
 
 <body>
         <div class="barra">
-            <h1> <img src="img/gatinho.png" alt="logo"></h1>
-            <nav>
-                <div class="icons-home">
-                <ul>
-                    <!-- Botão para abrir metas -->
-                    <li>
-                        <a href="meta.php"><img src="img/meta-icon.png"></a>
-                    </li>
-                    <!-- Botão para abrir extrato -->
-                    <li>
-                        <a href="extrato.php"><img src="img/extrato-icon.png" alt="sair"></a>
-                    </li>
-                    <!-- Botão para abrir a calculadora -->
-                    <li>
-                        <div id="calculator-button" onclick="openCalculator()">
-                            <img src="img/calc.png" alt="Calculadora">
-                        </div>
-                    </li>
-                    <li>
-                        <a href="logout.php"><img src="img/logout.png" alt="sair"></a>
-                    </li>
-                </ul>
-                </div>
-            
-            </nav>
-        </div>
-
-    <h1>Bem vindo, <?php echo htmlspecialchars($nomeUsuario); ?>!</h1>
-
-    <div class="btn-group">
+        <h1>Bem-vindo(a),  <strong><?php echo htmlspecialchars($nomeUsuario); ?></strong>!</h1>
+        <!--<div class="btn-group">
         <button type="button" id="addContaBtn" class="btn btn-outline-primary">Adicionar Conta Bancária</button>
         <button type="button" id="addReceitaBtn" class="btn btn-outline-primary">Adicionar Nova Receita</button>
         <button type="button" id="addDespesaBtn" class="btn btn-outline-primary">Adicionar Nova Despesa</button>
+    </div>   -->
+
+
+        <nav>
+    <!-- Botão do menu  -->
+    <div class="menu-button" onclick="toggleMenu()">
+        <img src="img/menu.png" alt="Menu">
     </div>
+
+    <!-- Itens do menu -->
+    <div class="icons-home">
+        <ul class="menu-items">
+            <!-- Botão para abrir metas -->
+            <li>
+                <a href="meta.php"><img src="img/meta-icon.png" alt="Metas"></a>
+            </li>
+            <!-- Botão para abrir extrato -->
+            <li>
+                <a href="extrato.php"><img src="img/extrato-icon.png" alt="Extrato"></a>
+            </li>
+            <!-- Botão para abrir a calculadora -->
+            <li>
+                <div id="calculator-button" onclick="openCalculator()">
+                    <img src="img/calc.png" alt="Calculadora">
+                </div>
+            </li>
+            <!-- Botão para logout -->
+            <li>
+                <a href="logout.php"><img src="img/logout.png" alt="Sair"></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<script src="menu.js"></script>
+
+</div>
+<div class="section-total">
+
+<div class="total-container">
+
+    <div class="total-valor">
+
+    <h2>Total</h2>
+        <h1>R$
+            <?php
+                require_once 'conexao.php';
+            if (isset($_SESSION['usuario_id'])) {
+                $usuario_id = $_SESSION['usuario_id'];
+    
+                // SQL para somar os saldos das contas bancárias
+                $sql = "SELECT SUM(saldo) as total_saldo FROM contas_bancarias WHERE usuario_id = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $usuario_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+    
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    // Exibe o total do saldo, com formatação monetária
+                    echo number_format($row['total_saldo'], 2, ',', '.');
+                } else {
+                    echo "0,00";  // Caso não haja saldo ou contas
+                }
+                $stmt->close();
+            } else {
+                echo "0,00";  // Caso não haja um usuário logado
+            }
+            ?>
+        </h1>
+    </div>
+    <div class="action-buttons">
+    <!-- Botão Receita -->
+    <a href="#addContaModal" class="action-btn" id="btnReceita">
+        <img src="img/receita-icon.png" alt="Receita">
+        <span>Receita</span>
+    </a>
+    <!-- Botão Despesa -->
+    <a href="#" class="action-btn" id="btnDespesa">
+        <img src="img/receita-icon.png" alt="Despesa">
+        <span>Despesa</span>
+    </a>
+    <!-- Botão Transferência -->
+    <a href="#" class="action-btn" id="btnTransferencia">
+        <img src="img/receita-icon.png" alt="Transferência">
+        <span>Transferência</span>
+    </a>
+
+     <!-- Botão Transferência -->
+     <a href="#" class="action-btn" id="btnTransferencia">
+        <img src="img/receita-icon.png" alt="Transferência">
+        <span>Cartões</span>
+    </a>
+     <!-- Botão Transferência -->
+     <a href="#" class="action-btn" id="btnTransferencia">
+        <img src="img/receita-icon.png" alt="Transferência">
+        <span>Extrato</span>
+    </a>
+</div>
+      
+    </div>
+
+</div>
+
 
     <!-- Modal para adicionar conta bancária -->
     <div id="addContaModal" class="modal">
@@ -177,33 +252,6 @@ $nomeUsuario = $_SESSION['nome_usuario'];
         </div>
     </div>
 
-    <h1>
-        Total em conta: R$
-        <?php
-        require_once 'conexao.php';
-        if (isset($_SESSION['usuario_id'])) {
-            $usuario_id = $_SESSION['usuario_id'];
-
-            // SQL para somar os saldos das contas bancárias
-            $sql = "SELECT SUM(saldo) as total_saldo FROM contas_bancarias WHERE usuario_id = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("i", $usuario_id);
-            $stmt->execute();
-            $result = $stmt->get_result();
-
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                // Exibe o total do saldo, com formatação monetária
-                echo number_format($row['total_saldo'], 2, ',', '.');
-            } else {
-                echo "0,00";  // Caso não haja saldo ou contas
-            }
-            $stmt->close();
-        } else {
-            echo "0,00";  // Caso não haja um usuário logado
-        }
-        ?>
-    </h1>
 
     <div class="row">
         <?php
@@ -264,9 +312,10 @@ $nomeUsuario = $_SESSION['nome_usuario'];
 
     <!-- Gráfico -->
     <div class="grafico">
+
+    <div class="section-grafico-total">
         <h3 class="titulo_centroM">Receitas x Despesas</h3>
         <canvas id="myChart"></canvas>
-    </div>
 
     <script>
         // Gráfico de Receitas e Despesas
@@ -343,17 +392,19 @@ $nomeUsuario = $_SESSION['nome_usuario'];
             }
         });
     </script>
+        </div>
 
-    <div class="grafico-pizza-container">
-        <div class="grafico-pizza">
-            <h3 class="titulo_centro ">Divisão de Despesas (7 dias)</h3>
+
+        <div class="section-grafico-despesa">
+            <h3 class="grafico-titulo ">Divisão de Despesas (7 dias)</h3>
             <canvas id="pieChart" width="200" height="200"></canvas>
         </div>
-        <div class="grafico-pizza">
-            <h3 class="titulo_centro ">Divisão de Saldo</h3>
+        <div class="section-grafico-saldo">
+            <h1 class="titulo_centro ">Divisão de Saldo</h1>
             <canvas id="pizzaChart" width="200" height="200"></canvas>
         </div>
     </div>
+    
 
     <script>
         // Dados para o gráfico de pizza

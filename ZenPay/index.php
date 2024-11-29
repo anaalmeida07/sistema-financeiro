@@ -60,7 +60,7 @@
         </div>
         </div>
         <div id="section-about-cards" class="section-about__cards">
-        <img src="img/no1.png" alt="exemplo" class="img-example-cards">
+        <img src="img/card2.png" alt="exemplo" class="img-example-cards">
         <div class="text-container-cards">
         
             <h1 class="cards-title"><strong>Gerencie seus<br> cartões de forma simples</strong></h1>
