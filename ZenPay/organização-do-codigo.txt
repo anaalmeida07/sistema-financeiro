@@ -1,0 +1,35 @@
+ZENPAY/
+├── assets/                # Recursos estáticos
+│   ├── css/               # Arquivos CSS
+│   │   ├── cadastro.css
+│   │   ├── calculadora.css
+│   │   ├── extrato.css
+│   │   ├── home.css
+│   │   ├── index.css
+│   │   ├── login.css
+│   │   └── meta.css
+│   ├── img/               # Imagens (adicione as imagens aqui)
+│   └── js/                # Arquivos JavaScript
+│       ├── menu.js
+│       └── modal.js
+├── config/                # Configurações do projeto
+│   └── conexao.php        # Arquivo de conexão com o banco de dados
+├── controllers/           # Processamento de lógica do backend
+│   ├── processar_despesa.php
+│   ├── processar_receita.php
+│   └── dados_grafico.php
+├── models/                # Arquivos relacionados ao banco de dados
+│   ├── financeiro.sql     # Esquema do banco de dados
+│   └── adicionar_conta.php
+├── views/                 # Páginas principais (HTML + PHP)
+│   ├── cadastro-tela.php
+│   ├── calculadora.php
+│   ├── extrato.php
+│   ├── home.php
+│   ├── index.php
+│   ├── login.php
+│   └── meta.php
+├── public/                # Arquivos públicos
+│   ├── logar.php
+│   └── logout.php
+└── README.md              # Documentação inicial do projeto
